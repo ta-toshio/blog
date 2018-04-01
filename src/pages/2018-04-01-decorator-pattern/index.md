@@ -2,7 +2,7 @@
 path: "/decorator-pattern"
 date: "2018-04-01T06:15:16.365Z"
 title: "Decorator Pattern"
-tags: [scrap]
+tags: ["scrap"]
 ---
 
 ## キーワード
