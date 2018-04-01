@@ -1,0 +1,2 @@
+webpackJsonp([0x81b8806e4260],{509:function(e,t){e.exports={data:{site:{siteMetadata:{title:"Toshio Blog"}},allMarkdownRemark:{edges:[{node:{excerpt:"Your next, great blog post goes here",fields:{slug:"/2018-04-01-newpost/"},frontmatter:{date:"01 April, 2018",title:"Newpost"}}}]}},pathContext:{}}}});
+//# sourceMappingURL=path---index-2223a1c9192164ea365f.js.map

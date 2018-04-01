@@ -1,0 +1,2 @@
+webpackJsonp([0xff6c12824b9b],{506:function(t,e){t.exports={data:{site:{siteMetadata:{title:"Toshio Blog",author:"Ta Toshio"}},markdownRemark:{id:"/Volumes/Transcend/Workspace/exp/gatsby/ta-toshio-blog/src/pages/2018-04-01-newpost/index.md absPath of file >>> MarkdownRemark",html:"<p>Your next, great blog post goes here</p>",frontmatter:{title:"Newpost",date:"April 01, 2018"}}},pathContext:{slug:"/2018-04-01-newpost/",previous:!1,next:!1}}}});
+//# sourceMappingURL=path---2018-04-01-newpost-ef27cf03b3e87704e7b4.js.map
