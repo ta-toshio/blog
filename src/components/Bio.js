@@ -16,6 +16,7 @@ class Bio extends React.Component {
           marginBottom: rhythm(2.5),
         }}
       >
+      {/*
         <img
           src={profilePic}
           alt={`Kyle Mathews`}
@@ -26,10 +27,10 @@ class Bio extends React.Component {
             height: rhythm(2),
           }}
         />
+      */}
         <p>
-          Written by <strong>Kyle Mathews</strong> who lives and works in San
-          Francisco building useful things.{' '}
-          <a href="https://twitter.com/kylemathews">
+          Written by <strong>Ta Toshio</strong> who lives and works in Saitama, Japan .
+          <a href="https://twitter.com/ta_toshio_tw">
             You should follow him on Twitter
           </a>
         </p>
