@@ -5,6 +5,9 @@ title: "Decorator Pattern"
 tags: ["scrap"]
 ---
 
+Decorator Patternについて調べたことについてのメモです。
+
+
 ## キーワード
 
 * 継承の代替手段
