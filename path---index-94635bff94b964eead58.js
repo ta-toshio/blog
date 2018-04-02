@@ -1,0 +1,2 @@
+webpackJsonp([0x81b8806e4260],{511:function(t,e){t.exports={data:{site:{siteMetadata:{title:"Toshio Blog"}},allMarkdownRemark:{edges:[{node:{excerpt:"Decorator Pattern…",fields:{slug:"/2018-04-01-decorator-pattern/"},frontmatter:{date:"01 April, 2018",title:"Decorator Pattern"}}},{node:{excerpt:"Hello World!",fields:{slug:"/2018-04-01-hello-world/"},frontmatter:{date:"01 April, 2018",title:"Hello World"}}}]}},pathContext:{}}}});
+//# sourceMappingURL=path---index-94635bff94b964eead58.js.map
