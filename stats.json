@@ -13,8 +13,8 @@
       "path----557518bd178906f8d58a.js.map"
     ],
     "path---2018-04-01-decorator-pattern": [
-      "path---2018-04-01-decorator-pattern-9d70b137320989952e08.js",
-      "path---2018-04-01-decorator-pattern-9d70b137320989952e08.js.map"
+      "path---2018-04-01-decorator-pattern-3126344b4b0cb4743a2a.js",
+      "path---2018-04-01-decorator-pattern-3126344b4b0cb4743a2a.js.map"
     ],
     "component---node-modules-gatsby-plugin-offline-app-shell-js": [
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js",
@@ -29,8 +29,8 @@
       "component---src-layouts-index-js-8af51a7b81393e72e79d.js.map"
     ],
     "path---index": [
-      "path---index-94635bff94b964eead58.js",
-      "path---index-94635bff94b964eead58.js.map"
+      "path---index-8e12bf87ef2fb6424a6f.js",
+      "path---index-8e12bf87ef2fb6424a6f.js.map"
     ],
     "component---src-pages-404-js": [
       "component---src-pages-404-js-4503918ea3a16cfcdb75.js",
@@ -51,10 +51,14 @@
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js.map"
     ],
     "app": [
-      "app-cde630ecd3d102e8ba39.js",
+      "app-310759eaf03e64800459.js",
       "build-js-styles.css",
-      "app-cde630ecd3d102e8ba39.js.map",
+      "app-310759eaf03e64800459.js.map",
       "build-js-styles.css.map"
+    ],
+    "path---2018-04-03-display-table-case-study": [
+      "path---2018-04-03-display-table-case-study-69ed92ac5f8042fff062.js",
+      "path---2018-04-03-display-table-case-study-69ed92ac5f8042fff062.js.map"
     ],
     "path---404": [
       "path---404-a0e39f21c11f6a62c5ab.js",
