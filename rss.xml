@@ -1,4 +1,75 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Tue, 03 Apr 2018 02:27:19 GMT</lastBuildDate><item><title><![CDATA[display:tableのケーススタディ]]></title><description><![CDATA[画像と画像のキャプションを同じ幅にする例 コンテンツ自体の幅が指定したwidthを超える場合、コンテンツ自体の幅になる。
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Mon, 03 Sep 2018 15:31:10 GMT</lastBuildDate><item><title><![CDATA[Semantic Web]]></title><description><![CDATA[WEBを支える技術11を読んで。 セマンティックwebとは プログラムからも理解できるhtml、xmlリソースを実現するための技術。 RDFとは 「トリプル」と呼ばれる主語、述語、目的語の３つの組を使って、Web上のリソースの意味を処理できるようにする技術。 RDF…]]></description><link>https://ta-toshio.github.io/blog//2018-09-03-semantic-web/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-09-03-semantic-web/</guid><pubDate>Mon, 03 Sep 2018 13:58:21 GMT</pubDate><content:encoded>&lt;p&gt;WEBを支える技術11を読んで。&lt;/p&gt;
+&lt;h1&gt;セマンティックwebとは&lt;/h1&gt;
+&lt;p&gt;プログラムからも理解できるhtml、xmlリソースを実現するための技術。&lt;/p&gt;
+&lt;h1&gt;RDFとは&lt;/h1&gt;
+&lt;p&gt;「トリプル」と呼ばれる主語、述語、目的語の３つの組を使って、Web上のリソースの意味を処理できるようにする技術。&lt;/p&gt;
+&lt;p&gt;RDF技術はあまり普及しなかったと言及されている。確かにRDF文書構造を意識したwebアプリケーションという話はあまり聞かないように思う。&lt;/p&gt;
+&lt;p&gt;RDFを利用したアプリケーション&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;DBpedia&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DBpediaはWikipediaから情報を抽出してLOD (Linked Open Data)として公開するコミュニティプロジェクト&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://ja.dbpedia.org/&quot;&gt;http://ja.dbpedia.org/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;DBpedia説明記事抜粋&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;DBpediaがWikipediaから抽出する構造化データは，Wikipediaの各記事についての事実や説明，記事間の関係等である。これらはグラフとして表現するのが適切なため，構造化データの表現にはセマンティックWebにおけるデータ記述のためのグラフモデルであるRDF（Resource Description Framework）3）を用いている。また，構造化するための語彙として，DBpediaオントロジーも開発している。&lt;/p&gt;
+&lt;p&gt;DBpediaが先進的だったのは，単にRDFで表現した構造化データをWeb上で公開したということだけではなく，当時W3C等で議論されていた，WebでRDFデータを公開共有するときのよりよい設計や公開の手法であるリンクトデータ（Linked Data）4）とSPARQL5）を適用したことにある。以降，DBpediaを参照実装として，同様の形でWeb上に公開されるデータセットが増えていくことになる。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.jstage.jst.go.jp/article/johokanri/60/5/60_307/_html/-char/ja&quot;&gt;https://www.jstage.jst.go.jp/article/johokanri/60/5/60&lt;em&gt;307/&lt;/em&gt;html/-char/ja&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Wikipediaをスクレイピングしてデータを取得する、という記事はよく見かけるが、DBpediaを利用すると楽にデータの抽出が可能になる。
+しかし抽出対象のwikipediaのデータが2016-04-07時点のデータで更新が止まっているようである。&lt;/p&gt;
+&lt;h1&gt;microformatsとは&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;RDFの問題点を解消した技術がmicoroformatsです。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;p.177&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;HTML文書そのものにメタデータを埋め込む技術です。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;p.178&lt;/p&gt;
+&lt;p&gt;microformatsもRDF同様あまり耳にしたことがなかったので、RDF同様廃れてしまった技術なのかな、と思ったがSEOの向上のためにという記事が見られたので、現役で使用されているようだ。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.nagahitoyuki.com/2018/08/markup-of-hatom-hentry-use-microformats-structured-data-for-seo-countermeasure.html&quot;&gt;https://www.nagahitoyuki.com/2018/08/markup-of-hatom-hentry-use-microformats-structured-data-for-seo-countermeasure.html&lt;/a&gt;&lt;/p&gt;
+&lt;h1&gt;まとめ&lt;/h1&gt;
+&lt;p&gt;Webのテキスト文書を構造化してプログラムからも理解するための取り決めが行われていたということを学んだ。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Phpstorm Xdebug]]></title><description><![CDATA[docker for mac での実現方法 docker on vagrant での実現方法]]></description><link>https://ta-toshio.github.io/blog//2018-08-29-phpstorm-xdebug/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-08-29-phpstorm-xdebug/</guid><pubDate>Wed, 29 Aug 2018 08:30:50 GMT</pubDate><content:encoded>&lt;h1&gt;docker for mac での実現方法&lt;/h1&gt;
+&lt;h1&gt;docker on vagrant での実現方法&lt;/h1&gt;</content:encoded></item><item><title><![CDATA[Letsencrypt]]></title><description><![CDATA[lets encryptについて lets encryptとは lets encryptの利用方法 今回利用した方法 課題]]></description><link>https://ta-toshio.github.io/blog//2018-08-16-letsencrypt/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-08-16-letsencrypt/</guid><pubDate>Thu, 16 Aug 2018 02:46:59 GMT</pubDate><content:encoded>&lt;h1&gt;lets encryptについて&lt;/h1&gt;
+&lt;h2&gt;lets encryptとは&lt;/h2&gt;
+&lt;h2&gt;lets encryptの利用方法&lt;/h2&gt;
+&lt;h2&gt;今回利用した方法&lt;/h2&gt;
+&lt;h2&gt;課題&lt;/h2&gt;</content:encoded></item><item><title><![CDATA[Seo]]></title><description><![CDATA[SEO関連で行ったこと XMLサイトマップの追加
+ 
+参考にしたサイト https://promonista.com/glossary-sitemapxml/ https://www.seohacks.net/basic/terms/xml_sitemap/ Google…]]></description><link>https://ta-toshio.github.io/blog//2018-04-22-seo/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-04-22-seo/</guid><pubDate>Sun, 22 Apr 2018 02:30:44 GMT</pubDate><content:encoded>&lt;h1&gt;SEO関連で行ったこと&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;XMLサイトマップの追加
+&lt;br /&gt;
+参考にしたサイト&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://promonista.com/glossary-sitemapxml/&quot;&gt;https://promonista.com/glossary-sitemapxml/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.seohacks.net/basic/terms/xml_sitemap/&quot;&gt;https://www.seohacks.net/basic/terms/xml_sitemap/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Google Search Console
+&lt;br /&gt;
+参考にしたサイト&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://promonista.com/glossary-sitemapxml/&quot;&gt;https://promonista.com/glossary-sitemapxml/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.asobou.co.jp/blog/web/gsc01&quot;&gt;https://www.asobou.co.jp/blog/web/gsc01&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;robots.xt
+&lt;br /&gt;
+参考にしたサイト&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://seolaboratory.jp/41315/&quot;&gt;https://seolaboratory.jp/41315/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[display:tableのケーススタディ]]></title><description><![CDATA[画像と画像のキャプションを同じ幅にする例 コンテンツ自体の幅が指定したwidthを超える場合、コンテンツ自体の幅になる。
  を指定している箇所が特筆な箇所。 参考サイト https://app.codegrid.net/entry/css-table-…]]></description><link>https://ta-toshio.github.io/blog//2018-04-03-display-table-case-study/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-04-03-display-table-case-study/</guid><pubDate>Tue, 03 Apr 2018 02:02:19 GMT</pubDate><content:encoded>&lt;h2&gt;画像と画像のキャプションを同じ幅にする例&lt;/h2&gt;
 &lt;p&gt;コンテンツ自体の幅が指定したwidthを超える場合、コンテンツ自体の幅になる。
 &lt;code class=&quot;language-text&quot;&gt;width: 1%;&lt;/code&gt;を指定している箇所が特筆な箇所。&lt;/p&gt;
