@@ -24,6 +24,8 @@ http://zecl.hatenablog.com/entry/20070603/p1
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Decorator_UML_class_diagram.svg" />
 
-`gist:https://gist.github.com/ta-toshio/131d355af7660f0a2150d02d11e21afd#file-docorator-pattern-java-01-java`
+wikipediaのサンプルコード
 
-`gist:weirdpattern/ce54fdb1e5621b5966e146026995b974#syntax.text`
+`gist:ta-toshio/131d355af7660f0a2150d02d11e21afd#docorator-pattern-java-01.java`
+
+中心となるオブジェクトがあって、その役割を果たすのがConcreteComponentである。その中心となるオブジェクトに装飾する役割を果たすクラスがConcreteDecoratorである。

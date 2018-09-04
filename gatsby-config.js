@@ -31,9 +31,9 @@ module.exports = {
             },
           },
           {
-            resolve: `gatsby-transformer-remark`,
+            resolve: `gatsby-remark-embed-gist`,
             options: {
-              username: 'weirdpattern',
+              username: 'ta-toshio',
               includeDefaultCss: true
             }
           },
