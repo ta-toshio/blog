@@ -5,12 +5,12 @@
       "path---2018-04-01-hello-world-c53521e11d86f5f27fba.js.map"
     ],
     "path---2018-09-03-semantic-web": [
-      "path---2018-09-03-semantic-web-651271a821e3603f824c.js",
-      "path---2018-09-03-semantic-web-651271a821e3603f824c.js.map"
+      "path---2018-09-03-semantic-web-bcd9a2d01cdf22d74d6b.js",
+      "path---2018-09-03-semantic-web-bcd9a2d01cdf22d74d6b.js.map"
     ],
     "component---src-pages-index-js": [
-      "component---src-pages-index-js-7e02cb3d6b59f327fa57.js",
-      "component---src-pages-index-js-7e02cb3d6b59f327fa57.js.map"
+      "component---src-pages-index-js-11fdf033be0b5252addc.js",
+      "component---src-pages-index-js-11fdf033be0b5252addc.js.map"
     ],
     "path---": [
       "path----557518bd178906f8d58a.js",
@@ -25,25 +25,25 @@
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
     ],
     "component---src-templates-blog-post-js": [
-      "component---src-templates-blog-post-js-bbfe1871f2f0d173dd75.js",
-      "component---src-templates-blog-post-js-bbfe1871f2f0d173dd75.js.map"
+      "component---src-templates-blog-post-js-001b7c103c0b644d7465.js",
+      "component---src-templates-blog-post-js-001b7c103c0b644d7465.js.map"
     ],
     "component---src-layouts-index-js": [
       "component---src-layouts-index-js-8af51a7b81393e72e79d.js",
       "component---src-layouts-index-js-8af51a7b81393e72e79d.js.map"
     ],
     "path---index": [
-      "path---index-ce9f0e64dc8aebace644.js",
-      "path---index-ce9f0e64dc8aebace644.js.map"
+      "path---index-7375ab833973e1cc300c.js",
+      "path---index-7375ab833973e1cc300c.js.map"
     ],
     "component---src-pages-404-js": [
       "component---src-pages-404-js-4503918ea3a16cfcdb75.js",
       "component---src-pages-404-js-4503918ea3a16cfcdb75.js.map"
     ],
     "commons": [
-      "commons-6e82eaae3f56c620a9ec.js",
+      "commons-052854b14b2d9cebb713.js",
       "build-js-styles.css",
-      "commons-6e82eaae3f56c620a9ec.js.map",
+      "commons-052854b14b2d9cebb713.js.map",
       "build-js-styles.css.map"
     ],
     "path---404-html": [
@@ -55,18 +55,22 @@
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js.map"
     ],
     "app": [
-      "app-52782b85c36604a7a51e.js",
+      "app-25b948b106cc565bea18.js",
       "build-js-styles.css",
-      "app-52782b85c36604a7a51e.js.map",
+      "app-25b948b106cc565bea18.js.map",
       "build-js-styles.css.map"
     ],
     "path---2018-04-03-display-table-case-study": [
-      "path---2018-04-03-display-table-case-study-cd60fdb17cc3b448115c.js",
-      "path---2018-04-03-display-table-case-study-cd60fdb17cc3b448115c.js.map"
+      "path---2018-04-03-display-table-case-study-8edae8866c5e86bcfc7c.js",
+      "path---2018-04-03-display-table-case-study-8edae8866c5e86bcfc7c.js.map"
     ],
     "path---404": [
       "path---404-a0e39f21c11f6a62c5ab.js",
       "path---404-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "path---2018-09-04-docorator-pattern-code": [
+      "path---2018-09-04-docorator-pattern-code-c96f1450f51db612e21a.js",
+      "path---2018-09-04-docorator-pattern-code-c96f1450f51db612e21a.js.map"
     ]
   }
 }
