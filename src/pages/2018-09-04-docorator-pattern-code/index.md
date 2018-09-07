@@ -29,3 +29,7 @@ wikipediaのサンプルコード
 `gist:ta-toshio/131d355af7660f0a2150d02d11e21afd#docorator-pattern-java-01.java`
 
 中心となるオブジェクトがあって、その役割を果たすのがConcreteComponentである。その中心となるオブジェクトに装飾する役割を果たすクラスがConcreteDecoratorである。
+
+
+あとで読む:
+https://sourcemaking.com/design_patterns/decorator
