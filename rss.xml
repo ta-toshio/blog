@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Fri, 07 Sep 2018 13:08:10 GMT</lastBuildDate><item><title><![CDATA[Remote Debugger With Phpstorm]]></title><description><![CDATA[PhpStormでステップ実行でのデバッグをするための解説です。
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Fri, 07 Sep 2018 13:22:58 GMT</lastBuildDate><item><title><![CDATA[Remote Debugger With Phpstorm]]></title><description><![CDATA[PhpStormでステップ実行でのデバッグをするための解説です。
 度々忘れるので記事にします。 動作環境 Docker on Mac (Version: 18.06.0-ce-mac70 (26399)) PhpStorm (Version: PhpStorm 2018.1.…]]></description><link>https://ta-toshio.github.io/blog//2018-09-05-remote-debugger-with-phpstorm/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-09-05-remote-debugger-with-phpstorm/</guid><pubDate>Wed, 05 Sep 2018 08:01:51 GMT</pubDate><content:encoded>&lt;p&gt;PhpStormでステップ実行でのデバッグをするための解説です。
 度々忘れるので記事にします。&lt;/p&gt;
 &lt;p&gt;動作環境&lt;/p&gt;
@@ -211,7 +211,7 @@
 &lt;/p&gt;
 &lt;p&gt;以下のサイトに全ての項目ではありませんが、各項目の分かりやすい説明がありました。
 &lt;a href=&quot;https://qiita.com/castaneai/items/d5fdf577a348012ed8af&quot;&gt;https://qiita.com/castaneai/items/d5fdf577a348012ed8af&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;xdebug.remote_hostに少し解説します。&lt;/p&gt;
+&lt;p&gt;xdebug.remote_hostを少し解説します。&lt;/p&gt;
 &lt;p&gt;デバッグの制御を開始するには、PHP動作側とリモートをつなぐ必要があります。PHP動作側（つまりコンテナ）からホスト（Mac、PhpStorm）に接続したいわけです。&lt;/p&gt;
 &lt;p&gt;remote_hostに設定する値は、ホストのIPを名前解決する値を指定するわけですが、その値は &lt;code class=&quot;language-text&quot;&gt;host.docker.internal&lt;/code&gt;としてdockerが用意してくれています。&lt;/p&gt;
 &lt;blockquote&gt;
@@ -226,7 +226,7 @@
 &lt;p&gt;&lt;a href=&quot;https://docs.docker.com/docker-for-mac/release-notes/#docker-community-edition-18030-ce-mac59-2018-03-26&quot;&gt;https://docs.docker.com/docker-for-mac/release-notes/#docker-community-edition-18030-ce-mac59-2018-03-26&lt;/a&gt;&lt;/p&gt;
 &lt;h1&gt;PhpStormの設定&lt;/h1&gt;
 &lt;h2&gt;Server項目の設定&lt;/h2&gt;
-&lt;img src=&quot;/images/2018-09-05/server.jpg&quot; /&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/45221225-c6f7fe00-b2eb-11e8-8fad-e8abbb60a445.jpg&quot;&gt;
 &lt;ol start=&quot;0&quot;&gt;
 &lt;li&gt;Phpstorm -&gt; Preferences -&gt; Laguages &amp;#x26; Frameworks -&gt; PHP -&gt; Server&lt;/li&gt;
 &lt;li&gt;Nameは何でもよくて、&lt;/li&gt;
@@ -236,8 +236,8 @@
 &lt;li&gt;Apply -&gt; OK&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2&gt;Config項目の設定&lt;/h2&gt;
-&lt;img src=&quot;/images/2018-09-05/run-edit-conf.jpg&quot; /&gt;
-&lt;img src=&quot;/images/2018-09-05/debug-server-conf.jpg&quot; /&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/45221223-c65f6780-b2eb-11e8-8b15-db4cf7f7c64b.jpg&quot;&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/45221222-c65f6780-b2eb-11e8-858e-8d3db76e7393.jpg&quot;&gt;
 &lt;ol start=&quot;0&quot;&gt;
 &lt;li&gt;RUN -&gt; Edit Configurations…&lt;/li&gt;
 &lt;li&gt;+&lt;/li&gt;
@@ -559,7 +559,8 @@
 &lt;/div&gt;
 &lt;/p&gt;
 &lt;p&gt;中心となるオブジェクトがあって、その役割を果たすのがConcreteComponentである。その中心となるオブジェクトに装飾する役割を果たすクラスがConcreteDecoratorである。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://sourcemaking.com/design_patterns/decorator&quot;&gt;https://sourcemaking.com/design_patterns/decorator&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Semantic Web]]></title><description><![CDATA[WEBを支える技術11を読んで。 セマンティックwebとは プログラムからも理解できるhtml、xmlリソースを実現するための技術。 RDFとは 「トリプル」と呼ばれる主語、述語、目的語の３つの組を使って、Web上のリソースの意味を処理できるようにする技術。 RDF…]]></description><link>https://ta-toshio.github.io/blog//2018-09-03-semantic-web/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-09-03-semantic-web/</guid><pubDate>Mon, 03 Sep 2018 13:58:21 GMT</pubDate><content:encoded>&lt;p&gt;WEBを支える技術11を読んで。&lt;/p&gt;
+&lt;p&gt;あとで読む:
+&lt;a href=&quot;https://sourcemaking.com/design_patterns/decorator&quot;&gt;https://sourcemaking.com/design_patterns/decorator&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Semantic Web]]></title><description><![CDATA[WEBを支える技術11を読んで。 セマンティックwebとは プログラムからも理解できるhtml、xmlリソースを実現するための技術。 RDFとは 「トリプル」と呼ばれる主語、述語、目的語の３つの組を使って、Web上のリソースの意味を処理できるようにする技術。 RDF…]]></description><link>https://ta-toshio.github.io/blog//2018-09-03-semantic-web/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-09-03-semantic-web/</guid><pubDate>Mon, 03 Sep 2018 13:58:21 GMT</pubDate><content:encoded>&lt;p&gt;WEBを支える技術11を読んで。&lt;/p&gt;
 &lt;h1&gt;セマンティックwebとは&lt;/h1&gt;
 &lt;p&gt;プログラムからも理解できるhtml、xmlリソースを実現するための技術。&lt;/p&gt;
 &lt;h1&gt;RDFとは&lt;/h1&gt;
