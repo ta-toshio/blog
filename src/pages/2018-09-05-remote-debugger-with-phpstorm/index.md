@@ -42,7 +42,7 @@ xdebug.iniの例
 https://qiita.com/castaneai/items/d5fdf577a348012ed8af
 
 
-xdebug.remote_hostに少し解説します。
+xdebug.remote_hostを少し解説します。
 
 デバッグの制御を開始するには、PHP動作側とリモートをつなぐ必要があります。PHP動作側（つまりコンテナ）からホスト（Mac、PhpStorm）に接続したいわけです。
 
@@ -62,7 +62,7 @@ https://docs.docker.com/docker-for-mac/release-notes/#docker-community-edition-1
 
 ## Server項目の設定
 
-<img src="/images/2018-09-05/server.jpg" />
+<img src="https://user-images.githubusercontent.com/37950257/45221225-c6f7fe00-b2eb-11e8-8fad-e8abbb60a445.jpg" />
 
 0. Phpstorm -> Preferences -> Laguages & Frameworks -> PHP -> Server
 1. Nameは何でもよくて、
@@ -73,9 +73,9 @@ https://docs.docker.com/docker-for-mac/release-notes/#docker-community-edition-1
 
 ## Config項目の設定
 
-<img src="/images/2018-09-05/run-edit-conf.jpg" />
+<img src="https://user-images.githubusercontent.com/37950257/45221223-c65f6780-b2eb-11e8-8b15-db4cf7f7c64b.jpg" />
 
-<img src="/images/2018-09-05/debug-server-conf.jpg" />
+<img src="https://user-images.githubusercontent.com/37950257/45221222-c65f6780-b2eb-11e8-858e-8d3db76e7393.jpg" />
 
 0. RUN -> Edit Configurations...
 1. +
