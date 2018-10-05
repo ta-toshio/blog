@@ -1,4 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Fri, 05 Oct 2018 03:17:05 GMT</lastBuildDate><item><title><![CDATA[Lumen Lighthouse Basecontroller]]></title><description><![CDATA[LumenでNuwave\Lighthouse…]]></description><link>https://ta-toshio.github.io/blog//2018-10-05-lumen-lighthouse-basecontroller/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-10-05-lumen-lighthouse-basecontroller/</guid><pubDate>Fri, 05 Oct 2018 02:33:23 GMT</pubDate><content:encoded>&lt;p&gt;LumenでNuwave\Lighthouseを使うときの注意事項です。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Fri, 05 Oct 2018 04:08:41 GMT</lastBuildDate><item><title><![CDATA[Handle multipart/form-data on lumen with lighthouse]]></title><description><![CDATA[LumenでNuwave\Lighthouseを使用して、ファイルアップロードの扱い方を紹介します。 multipart/form-dataを扱う方針になります。 実装 https://github.com/jaydenseric/graphql-multipart…]]></description><link>https://ta-toshio.github.io/blog//2018-09-21-lumen-lighthouse-multipart-formdata/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-09-21-lumen-lighthouse-multipart-formdata/</guid><pubDate>Fri, 21 Sep 2018 03:44:49 GMT</pubDate><content:encoded>&lt;p&gt;LumenでNuwave\Lighthouseを使用して、ファイルアップロードの扱い方を紹介します。&lt;/p&gt;
+&lt;p&gt;multipart/form-dataを扱う方針になります。&lt;/p&gt;
+&lt;h2&gt;実装&lt;/h2&gt;
+&lt;ol start=&quot;0&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/jaydenseric/graphql-multipart-request-spec&quot;&gt;https://github.com/jaydenseric/graphql-multipart-request-spec&lt;/a&gt; の設計を元に実装されています。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;multipart/form-data で渡ってきた値を解析、パースする必要があります。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;app/Http/Middleware/GraphQLUploadMiddleware.php に 以下ファイルを置きます。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/rebing/graphql-laravel/blob/master/src/Rebing/GraphQL/GraphQLUploadMiddleware.php&quot;&gt;https://github.com/rebing/graphql-laravel/blob/master/src/Rebing/GraphQL/GraphQLUploadMiddleware.php&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;namespace の定義を &lt;code class=&quot;language-text&quot;&gt;App/Http/Middleware&lt;/code&gt; に修正してください。&lt;/p&gt;
+&lt;p&gt;boostrap/app.php にて上のmiddlewareを定義します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$app-&amp;gt;routeMiddleware([
+    ...
+    &amp;#39;graphql-upload&amp;#39; =&amp;gt; App\Http\Middleware\GraphQLUploadMiddleware::class,
+]);&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;上のmiddlewareを適用します。私は以下の方法で設定しました。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;config/lighthouse.php&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;#39;route&amp;#39; =&amp;gt; [
+    &amp;#39;prefix&amp;#39; =&amp;gt; &amp;#39;&amp;#39;,
+    // &amp;#39;middleware&amp;#39; =&amp;gt; [&amp;#39;web&amp;#39;,&amp;#39;api&amp;#39;],    // [ &amp;#39;loghttp&amp;#39;]
+    &amp;#39;middleware&amp;#39; =&amp;gt; [&amp;#39;graphql-upload&amp;#39;],
+],&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;サーバー側の設定は以上になります。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Lumen Lighthouse Basecontroller]]></title><description><![CDATA[LumenでNuwave\Lighthouse…]]></description><link>https://ta-toshio.github.io/blog//2018-09-20-lumen-lighthouse-basecontroller/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-09-20-lumen-lighthouse-basecontroller/</guid><pubDate>Thu, 20 Sep 2018 02:33:23 GMT</pubDate><content:encoded>&lt;p&gt;LumenでNuwave\Lighthouseを使うときの注意事項です。&lt;/p&gt;
 &lt;h2&gt;問題&lt;/h2&gt;
 &lt;p&gt;コントローラーのエントリポイントにデフォルト設定のまま使うと、期待しない挙動が度々あったので調査の上修正しました。&lt;/p&gt;
 &lt;h2&gt;解決方法&lt;/h2&gt;
