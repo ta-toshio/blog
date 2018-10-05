@@ -1,11 +1,11 @@
 ---
 path: "/aws-sdk-php-laravel"
-date: "2018-09-28T04:17:58.656Z"
+date: "2018-07-28T04:17:58.656Z"
 title: "Aws Sdk Php Laravel"
 tags: []
 ---
 
-lumenでs3を扱いたく、https://github.com/aws/aws-sdk-php-laravel を使用してみました。
+Lumenでs3を扱いたく、https://github.com/aws/aws-sdk-php-laravel を使用してみました。
 
 ただ結局Filesystemを使用してしまいまして、上のライブラリを利用しませんでしたが、一応記事として残しておきます。
 
