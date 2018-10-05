@@ -1,4 +1,70 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Fri, 05 Oct 2018 04:08:41 GMT</lastBuildDate><item><title><![CDATA[Handle multipart/form-data on lumen with lighthouse]]></title><description><![CDATA[LumenでNuwave\Lighthouseを使用して、ファイルアップロードの扱い方を紹介します。 multipart/form-dataを扱う方針になります。 実装 https://github.com/jaydenseric/graphql-multipart…]]></description><link>https://ta-toshio.github.io/blog//2018-09-21-lumen-lighthouse-multipart-formdata/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-09-21-lumen-lighthouse-multipart-formdata/</guid><pubDate>Fri, 21 Sep 2018 03:44:49 GMT</pubDate><content:encoded>&lt;p&gt;LumenでNuwave\Lighthouseを使用して、ファイルアップロードの扱い方を紹介します。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Fri, 05 Oct 2018 04:42:00 GMT</lastBuildDate><item><title><![CDATA[Aws Sdk Php Laravel]]></title><description><![CDATA[lumenでs3を扱いたく、 https://github.com/aws/aws-sdk-php-laravel  を使用してみました。 ただ結局Filesystem…]]></description><link>https://ta-toshio.github.io/blog//2018-09-28-aws-sdk-php-laravel/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-09-28-aws-sdk-php-laravel/</guid><pubDate>Fri, 28 Sep 2018 04:17:58 GMT</pubDate><content:encoded>&lt;p&gt;lumenでs3を扱いたく、&lt;a href=&quot;https://github.com/aws/aws-sdk-php-laravel&quot;&gt;https://github.com/aws/aws-sdk-php-laravel&lt;/a&gt; を使用してみました。&lt;/p&gt;
+&lt;p&gt;ただ結局Filesystemを使用してしまいまして、上のライブラリを利用しませんでしたが、一応記事として残しておきます。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;インストール&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;composer require aws/aws-sdk-php-laravel&lt;/p&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;サービスプロバイダーに登録&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;bootstrap/app.php&lt;/code&gt; に&lt;/p&gt;
+&lt;p&gt;$app-&gt;register(Aws\Laravel\AwsServiceProvider::class);&lt;/p&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;設定値を定義&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;config/aws.php に以下のような内容で設定&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;lt;?php
+
+use Aws\Laravel\AwsServiceProvider;
+
+return [
+    &amp;#39;credentials&amp;#39; =&amp;gt; [
+        &amp;#39;key&amp;#39;    =&amp;gt; env(&amp;#39;AWS_ACCESS_KEY_ID&amp;#39;),
+        &amp;#39;secret&amp;#39; =&amp;gt; env(&amp;#39;AWS_SECRET_ACCESS_KEY&amp;#39;),
+    ],
+    &amp;#39;region&amp;#39; =&amp;gt; env(&amp;#39;AWS_REGION&amp;#39;, &amp;#39;us-east-1&amp;#39;),
+    &amp;#39;version&amp;#39; =&amp;gt; &amp;#39;latest&amp;#39;,
+    &amp;#39;ua_append&amp;#39; =&amp;gt; [
+        &amp;#39;L5MOD/&amp;#39; . AwsServiceProvider::VERSION,
+    ],
+];&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;準備としては以上です。&lt;/p&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;使用方法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$this-&amp;gt;s3 = app()-&amp;gt;make(&amp;#39;aws&amp;#39;)-&amp;gt;createClient(&amp;#39;s3&amp;#39;);
+
+// バケット一覧
+$results = $this-&amp;gt;s3-&amp;gt;listBuckets();
+
+// アップロード
+$results = $this-&amp;gt;s3-&amp;gt;putObject([
+    &amp;#39;Key&amp;#39; =&amp;gt; &amp;#39;test/a/test.jpg&amp;#39;,
+    &amp;#39;Bucket&amp;#39; =&amp;gt; env(&amp;#39;AWS_BUCKET&amp;#39;),
+    &amp;#39;SourceFile&amp;#39; =&amp;gt; base_path() . &amp;#39;/tests/Data/480x640.jpg&amp;#39;,
+    &amp;#39;ACL&amp;#39; =&amp;gt; &amp;#39;public-read&amp;#39;,
+]);
+
+// 削除
+$result = $this-&amp;gt;s3-&amp;gt;deleteObjects([
+    &amp;#39;Bucket&amp;#39;  =&amp;gt; env(&amp;#39;AWS_BUCKET&amp;#39;),
+    &amp;#39;Delete&amp;#39; =&amp;gt; [
+        &amp;#39;Objects&amp;#39; =&amp;gt; [
+            [&amp;#39;Key&amp;#39; =&amp;gt; &amp;#39;test/a/test1.jpg&amp;#39;],
+            [&amp;#39;Key&amp;#39; =&amp;gt; &amp;#39;test/a/test2.jpg&amp;#39;],
+        ]
+    ],
+]);&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;5 モック&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$aws = Mockery::mock(&amp;#39;Aws\Sdk&amp;#39;);
+$this-&amp;gt;app-&amp;gt;instance(&amp;#39;aws&amp;#39;, $aws);&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;以上です。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Handle multipart/form-data on lumen with lighthouse]]></title><description><![CDATA[LumenでNuwave\Lighthouseを使用して、ファイルアップロードの扱い方を紹介します。 multipart/form-dataを扱う方針になります。 実装 https://github.com/jaydenseric/graphql-multipart…]]></description><link>https://ta-toshio.github.io/blog//2018-09-21-lumen-lighthouse-multipart-formdata/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-09-21-lumen-lighthouse-multipart-formdata/</guid><pubDate>Fri, 21 Sep 2018 03:44:49 GMT</pubDate><content:encoded>&lt;p&gt;LumenでNuwave\Lighthouseを使用して、ファイルアップロードの扱い方を紹介します。&lt;/p&gt;
 &lt;p&gt;multipart/form-dataを扱う方針になります。&lt;/p&gt;
 &lt;h2&gt;実装&lt;/h2&gt;
 &lt;ol start=&quot;0&quot;&gt;
