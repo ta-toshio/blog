@@ -1,8 +1,8 @@
 ---
 path: "/lumen-lighthouse-basecontroller"
-date: "2018-10-05T02:33:23.418Z"
+date: "2018-09-20T02:33:23.418Z"
 title: "Lumen Lighthouse Basecontroller"
-tags: []
+tags: ['lumen', 'graphql']
 ---
 
 LumenでNuwave\Lighthouseを使うときの注意事項です。
