@@ -1,69 +1,463 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Fri, 05 Oct 2018 05:14:02 GMT</lastBuildDate><item><title><![CDATA[Aws Sdk Php Laravel]]></title><description><![CDATA[lumenでs3を扱いたく、 https://github.com/aws/aws-sdk-php-laravel  を使用してみました。 ただ結局Filesystem…]]></description><link>https://ta-toshio.github.io/blog//2018-09-28-aws-sdk-php-laravel/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-09-28-aws-sdk-php-laravel/</guid><pubDate>Fri, 28 Sep 2018 04:17:58 GMT</pubDate><content:encoded>&lt;p&gt;lumenでs3を扱いたく、&lt;a href=&quot;https://github.com/aws/aws-sdk-php-laravel&quot;&gt;https://github.com/aws/aws-sdk-php-laravel&lt;/a&gt; を使用してみました。&lt;/p&gt;
-&lt;p&gt;ただ結局Filesystemを使用してしまいまして、上のライブラリを利用しませんでしたが、一応記事として残しておきます。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;インストール&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;composer require aws/aws-sdk-php-laravel&lt;/p&gt;
-&lt;ol start=&quot;2&quot;&gt;
-&lt;li&gt;サービスプロバイダーに登録&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;bootstrap/app.php&lt;/code&gt; に&lt;/p&gt;
-&lt;p&gt;$app-&gt;register(Aws\Laravel\AwsServiceProvider::class);&lt;/p&gt;
-&lt;ol start=&quot;3&quot;&gt;
-&lt;li&gt;設定値を定義&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;config/aws.php に以下のような内容で設定&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot;&gt;
-      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;lt;?php
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Fri, 05 Oct 2018 07:51:05 GMT</lastBuildDate><item><title><![CDATA[formik-material-uiでのCheckboxの初期値]]></title><description><![CDATA[material-uiとformikを苦労なくつなぎこみたい場合、以下のモジュールがあります。 https://github.com/stackworx/formik-material-ui ただ2018/09の時点ではcheckbox…]]></description><link>https://ta-toshio.github.io/blog//2018-09-28-formik-material-ui-checkbox/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-09-28-formik-material-ui-checkbox/</guid><pubDate>Fri, 28 Sep 2018 07:08:48 GMT</pubDate><content:encoded>&lt;p&gt;material-uiとformikを苦労なくつなぎこみたい場合、以下のモジュールがあります。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/stackworx/formik-material-ui&quot;&gt;https://github.com/stackworx/formik-material-ui&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ただ2018/09の時点ではcheckboxの振る舞いで初期値にチェックがつけることができなそうです。&lt;/p&gt;
+&lt;p&gt;手元では修正しましたのでここに載せておきます。&lt;/p&gt;
+&lt;p&gt;Before: 2018/09の時点でのソース&lt;/p&gt;
+&lt;p&gt;&lt;div id=&quot;gist92296572&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-checkbox-tsx&quot; class=&quot;file&quot;&gt;
+    
 
-use Aws\Laravel\AwsServiceProvider;
+  &lt;div itemprop=&quot;text&quot; class=&quot;blob-wrapper data type-typescript &quot;&gt;
+      &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot;&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;//&lt;/span&gt; @ts-ignore&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;React&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;react&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;MuiCheckbox&lt;/span&gt;, {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-smi&quot;&gt;CheckboxProps&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;MuiCheckboxProps&lt;/span&gt;,&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;} &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;@material-ui/core/Checkbox&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; { &lt;span class=&quot;pl-smi&quot;&gt;FieldProps&lt;/span&gt; } &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;formik&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; { &lt;span class=&quot;pl-smi&quot;&gt;Omit&lt;/span&gt; } &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;./types&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L8&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L9&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;CheckboxProps&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L10&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC10&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-k&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;pl-e&quot;&gt;FieldProps&lt;/span&gt;,&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L11&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-e&quot;&gt;Omit&lt;/span&gt;&amp;lt;&lt;span class=&quot;pl-en&quot;&gt;MuiCheckboxProps&lt;/span&gt;, &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;form&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;&amp;gt; {}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L12&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L13&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;13&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC13&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;const&lt;/span&gt;&lt;/span&gt; Checkbox&lt;span class=&quot;pl-k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;React&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;ComponentType&lt;/span&gt;&amp;lt;&lt;span class=&quot;pl-en&quot;&gt;CheckboxProps&lt;/span&gt;&amp;gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; ({&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L14&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;14&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-smi&quot;&gt;field&lt;/span&gt;,&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L15&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;15&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC15&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  form: { &lt;span class=&quot;pl-smi&quot;&gt;isSubmitting&lt;/span&gt; },&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L16&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;16&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC16&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-smi&quot;&gt;disabled&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;false&lt;/span&gt;,&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L17&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;17&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-k&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;pl-smi&quot;&gt;props&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L18&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;18&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC18&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;}) &lt;span class=&quot;pl-k&quot;&gt;=&amp;gt;&lt;/span&gt; (&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L19&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;19&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-k&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;pl-v&quot;&gt;MuiCheckbox&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L20&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;20&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC20&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-v&quot;&gt;disabled&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt;{isSubmitting || &lt;span class=&quot;pl-smi&quot;&gt;disabled&lt;/span&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L21&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;21&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC21&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    {&lt;span class=&quot;pl-k&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;pl-v&quot;&gt;props&lt;/span&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L22&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;22&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC22&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    {&lt;span class=&quot;pl-k&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;pl-v&quot;&gt;field&lt;/span&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L23&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;23&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC23&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;//&lt;/span&gt; TODO: is this the correct way?&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L24&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;24&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC24&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-v&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt;{field.value ? &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;checked&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt; : &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L25&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;25&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC25&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-k&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L26&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;26&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC26&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L27&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;27&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC27&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L28&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;28&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC28&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-smi&quot;&gt;Checkbox&lt;/span&gt;.&lt;span class=&quot;pl-smi&quot;&gt;displayName&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;FormikMaterialUICheckbox&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L29&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;29&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC29&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-tsx-L30&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;30&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-tsx-LC30&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;Checkbox&lt;/span&gt;;&lt;/td&gt;
+      &lt;/tr&gt;
+&lt;/table&gt;
 
-return [
-    &amp;#39;credentials&amp;#39; =&amp;gt; [
-        &amp;#39;key&amp;#39;    =&amp;gt; env(&amp;#39;AWS_ACCESS_KEY_ID&amp;#39;),
-        &amp;#39;secret&amp;#39; =&amp;gt; env(&amp;#39;AWS_SECRET_ACCESS_KEY&amp;#39;),
-    ],
-    &amp;#39;region&amp;#39; =&amp;gt; env(&amp;#39;AWS_REGION&amp;#39;, &amp;#39;us-east-1&amp;#39;),
-    &amp;#39;version&amp;#39; =&amp;gt; &amp;#39;latest&amp;#39;,
-    &amp;#39;ua_append&amp;#39; =&amp;gt; [
-        &amp;#39;L5MOD/&amp;#39; . AwsServiceProvider::VERSION,
-    ],
-];&lt;/code&gt;&lt;/pre&gt;
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
       &lt;/div&gt;
-&lt;p&gt;準備としては以上です。&lt;/p&gt;
-&lt;ol start=&quot;4&quot;&gt;
-&lt;li&gt;使用方法&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&quot;gatsby-highlight&quot;&gt;
-      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$this-&amp;gt;s3 = app()-&amp;gt;make(&amp;#39;aws&amp;#39;)-&amp;gt;createClient(&amp;#39;s3&amp;#39;);
-
-// バケット一覧
-$results = $this-&amp;gt;s3-&amp;gt;listBuckets();
-
-// アップロード
-$results = $this-&amp;gt;s3-&amp;gt;putObject([
-    &amp;#39;Key&amp;#39; =&amp;gt; &amp;#39;test/a/test.jpg&amp;#39;,
-    &amp;#39;Bucket&amp;#39; =&amp;gt; env(&amp;#39;AWS_BUCKET&amp;#39;),
-    &amp;#39;SourceFile&amp;#39; =&amp;gt; base_path() . &amp;#39;/tests/Data/480x640.jpg&amp;#39;,
-    &amp;#39;ACL&amp;#39; =&amp;gt; &amp;#39;public-read&amp;#39;,
-]);
-
-// 削除
-$result = $this-&amp;gt;s3-&amp;gt;deleteObjects([
-    &amp;#39;Bucket&amp;#39;  =&amp;gt; env(&amp;#39;AWS_BUCKET&amp;#39;),
-    &amp;#39;Delete&amp;#39; =&amp;gt; [
-        &amp;#39;Objects&amp;#39; =&amp;gt; [
-            [&amp;#39;Key&amp;#39; =&amp;gt; &amp;#39;test/a/test1.jpg&amp;#39;],
-            [&amp;#39;Key&amp;#39; =&amp;gt; &amp;#39;test/a/test2.jpg&amp;#39;],
-        ]
-    ],
-]);&lt;/code&gt;&lt;/pre&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/ta-toshio/723b712a37fcc171c18815477cec18f0/raw/78cf72d73b5b4ab1cfb820409bd024440781cede/Checkbox.tsx&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/ta-toshio/723b712a37fcc171c18815477cec18f0#file-checkbox-tsx&quot;&gt;Checkbox.tsx&lt;/a&gt;
+        hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
-&lt;p&gt;5 モック&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot;&gt;
-      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$aws = Mockery::mock(&amp;#39;Aws\Sdk&amp;#39;);
-$this-&amp;gt;app-&amp;gt;instance(&amp;#39;aws&amp;#39;, $aws);&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;After: 修正したファイル&lt;/p&gt;
+&lt;p&gt;&lt;div id=&quot;gist92296572&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-checkbox-js&quot; class=&quot;file&quot;&gt;
+    
+
+  &lt;div itemprop=&quot;text&quot; class=&quot;blob-wrapper data type-javascript &quot;&gt;
+      &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot;&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-js-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-js-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;MuiCheckbox&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;@material-ui/core/Checkbox&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-js-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-js-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-js-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-js-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;Checkbox&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; ({&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-js-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-js-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  field,&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-js-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-js-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  form&lt;span class=&quot;pl-k&quot;&gt;:&lt;/span&gt; { isSubmitting },&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-js-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-js-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  disabled &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;false&lt;/span&gt;,&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-js-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-js-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-k&quot;&gt;...&lt;/span&gt;props&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-js-L8&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-js-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;}) &lt;span class=&quot;pl-k&quot;&gt;=&amp;gt;&lt;/span&gt; {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-js-L9&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-js-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-k&quot;&gt;return&lt;/span&gt; (&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-js-L10&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-js-LC10&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-k&quot;&gt;&amp;lt;&lt;/span&gt;MuiCheckbox&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-js-L11&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-js-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    disabled&lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt;{isSubmitting &lt;span class=&quot;pl-k&quot;&gt;||&lt;/span&gt; disabled}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-js-L12&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-js-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    {&lt;span class=&quot;pl-k&quot;&gt;...&lt;/span&gt;props}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-js-L13&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;13&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-js-LC13&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    {&lt;span class=&quot;pl-k&quot;&gt;...&lt;/span&gt;field}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-js-L14&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;14&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-js-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    checked&lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt;{&lt;span class=&quot;pl-smi&quot;&gt;field&lt;/span&gt;.&lt;span class=&quot;pl-c1&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;==&lt;/span&gt; (&lt;span class=&quot;pl-smi&quot;&gt;props&lt;/span&gt;.&lt;span class=&quot;pl-c1&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;true&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;) &lt;span class=&quot;pl-k&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;false&lt;/span&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-js-L15&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;15&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-js-LC15&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    value&lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt;{&lt;span class=&quot;pl-smi&quot;&gt;props&lt;/span&gt;.&lt;span class=&quot;pl-c1&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;true&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-js-L16&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;16&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-js-LC16&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-k&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-js-L17&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;17&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-js-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;)}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-js-L18&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;18&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-js-LC18&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-checkbox-js-L19&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;19&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-checkbox-js-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;Checkbox&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
       &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/ta-toshio/723b712a37fcc171c18815477cec18f0/raw/78cf72d73b5b4ab1cfb820409bd024440781cede/Checkbox.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/ta-toshio/723b712a37fcc171c18815477cec18f0#file-checkbox-js&quot;&gt;Checkbox.js&lt;/a&gt;
+        hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;使用例:&lt;/p&gt;
+&lt;p&gt;&lt;div id=&quot;gist92296572&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-sample-use-js&quot; class=&quot;file&quot;&gt;
+    
+
+  &lt;div itemprop=&quot;text&quot; class=&quot;blob-wrapper data type-javascript &quot;&gt;
+      &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot;&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-sample-use-js-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-sample-use-js-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;FormControlLabel&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;@material-ui/core/FormControlLabel&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-sample-use-js-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-sample-use-js-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; { &lt;span class=&quot;pl-smi&quot;&gt;Field&lt;/span&gt; } &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;formik&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-sample-use-js-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-sample-use-js-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-smi&quot;&gt;Checkbox&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;path/to/myCheckbox&lt;span class=&quot;pl-pds&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-sample-use-js-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-sample-use-js-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-sample-use-js-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-sample-use-js-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;&amp;lt;&lt;/span&gt;FormControlLabel&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-sample-use-js-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-sample-use-js-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  label&lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;ラベル&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-sample-use-js-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-sample-use-js-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  control&lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt;{&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-sample-use-js-L8&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-sample-use-js-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;&amp;lt;&lt;/span&gt;Field&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-sample-use-js-L9&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-sample-use-js-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      name&lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;anything&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-sample-use-js-L10&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-sample-use-js-LC10&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      component&lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt;{Checkbox}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-sample-use-js-L11&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-sample-use-js-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      value&lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;1&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-sample-use-js-L12&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-sample-use-js-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-sample-use-js-L13&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;13&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-sample-use-js-LC13&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-sample-use-js-L14&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;14&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-sample-use-js-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/ta-toshio/723b712a37fcc171c18815477cec18f0/raw/78cf72d73b5b4ab1cfb820409bd024440781cede/sample-use.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/ta-toshio/723b712a37fcc171c18815477cec18f0#file-sample-use-js&quot;&gt;sample-use.js&lt;/a&gt;
+        hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;2018/10時点ではいつ取り込まれるのか分かりませんがPRがありますね。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/stackworx/formik-material-ui/pull/27/files&quot;&gt;https://github.com/stackworx/formik-material-ui/pull/27/files&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div id=&quot;gist92296572&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-prcheckbox-tsx&quot; class=&quot;file&quot;&gt;
+    
+
+  &lt;div itemprop=&quot;text&quot; class=&quot;blob-wrapper data type-typescript &quot;&gt;
+      &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot;&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;const&lt;/span&gt;&lt;/span&gt; Checkbox&lt;span class=&quot;pl-k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;React&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;ComponentType&lt;/span&gt;&amp;lt;&lt;span class=&quot;pl-en&quot;&gt;CheckboxProps&lt;/span&gt;&amp;gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; ({&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-smi&quot;&gt;field&lt;/span&gt;,&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  form: { &lt;span class=&quot;pl-smi&quot;&gt;isSubmitting&lt;/span&gt; },&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-smi&quot;&gt;disabled&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;false&lt;/span&gt;,&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-smi&quot;&gt;LabelProps&lt;/span&gt;,&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-k&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;pl-smi&quot;&gt;props&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;}) &lt;span class=&quot;pl-k&quot;&gt;=&amp;gt;&lt;/span&gt; (&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-L8&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-k&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;pl-v&quot;&gt;FormControlLabel&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-L9&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-v&quot;&gt;control&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt;{&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-L10&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-LC10&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &amp;lt;&lt;span class=&quot;pl-smi&quot;&gt;MuiCheckbox&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-L11&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-smi&quot;&gt;disabled&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt;{isSubmitting || &lt;span class=&quot;pl-smi&quot;&gt;disabled&lt;/span&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-L12&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-smi&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt;{field.&lt;span class=&quot;pl-smi&quot;&gt;name&lt;/span&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-L13&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;13&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-LC13&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-smi&quot;&gt;checked&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt;{field.&lt;span class=&quot;pl-smi&quot;&gt;value&lt;/span&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-L14&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;14&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        {&lt;span class=&quot;pl-k&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;pl-smi&quot;&gt;props&lt;/span&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-L15&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;15&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-LC15&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        {&lt;span class=&quot;pl-k&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;pl-v&quot;&gt;field&lt;/span&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-L16&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;16&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-LC16&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-k&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-L17&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;17&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-L18&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;18&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-LC18&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    {&lt;span class=&quot;pl-k&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;pl-v&quot;&gt;LabelProps&lt;/span&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-L19&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;19&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-k&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-L20&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;20&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-prcheckbox-tsx-LC20&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/ta-toshio/723b712a37fcc171c18815477cec18f0/raw/78cf72d73b5b4ab1cfb820409bd024440781cede/PRCheckbox.tsx&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/ta-toshio/723b712a37fcc171c18815477cec18f0#file-prcheckbox-tsx&quot;&gt;PRCheckbox.tsx&lt;/a&gt;
+        hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;FormControlLabel&lt;/code&gt; が追加されていて、valueに &lt;code class=&quot;language-text&quot;&gt;field.name&lt;/code&gt;が設定されていますね。&lt;/p&gt;
+&lt;p&gt;以下のようにfield.nameの値がPOSTされるような形なのでしょうか。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;[
+  &amp;#39;someCheckboxFieldName&amp;#39; =&amp;gt; &amp;#39;someCheckboxFieldName&amp;#39;
+]&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;どのような挙動になるか確かではありませんが、面白いですね。&lt;/p&gt;
 &lt;p&gt;以上です。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Handle multipart/form-data on lumen with lighthouse]]></title><description><![CDATA[LumenでNuwave\Lighthouseを使用して、ファイルアップロードの扱い方を紹介します。 multipart/form-dataを扱う方針になります。 実装 https://github.com/jaydenseric/graphql-multipart…]]></description><link>https://ta-toshio.github.io/blog//2018-09-21-lumen-lighthouse-multipart-formdata/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-09-21-lumen-lighthouse-multipart-formdata/</guid><pubDate>Fri, 21 Sep 2018 03:44:49 GMT</pubDate><content:encoded>&lt;p&gt;LumenでNuwave\Lighthouseを使用して、ファイルアップロードの扱い方を紹介します。&lt;/p&gt;
 &lt;p&gt;multipart/form-dataを扱う方針になります。&lt;/p&gt;
 &lt;h2&gt;実装&lt;/h2&gt;
@@ -1090,12 +1484,77 @@ $this-&amp;gt;app-&amp;gt;instance(&amp;#39;aws&amp;#39;, $aws);&lt;/code&gt;&lt
 &lt;p&gt;microformatsもRDF同様あまり耳にしたことがなかったので、RDF同様廃れてしまった技術なのかな、と思ったがSEOの向上のためにという記事が見られたので、現役で使用されているようだ。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.nagahitoyuki.com/2018/08/markup-of-hatom-hentry-use-microformats-structured-data-for-seo-countermeasure.html&quot;&gt;https://www.nagahitoyuki.com/2018/08/markup-of-hatom-hentry-use-microformats-structured-data-for-seo-countermeasure.html&lt;/a&gt;&lt;/p&gt;
 &lt;h1&gt;まとめ&lt;/h1&gt;
-&lt;p&gt;Webのテキスト文書を構造化してプログラムからも理解するための取り決めが行われていたということを学んだ。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Phpstorm Xdebug]]></title><description><![CDATA[docker for mac での実現方法 docker on vagrant での実現方法]]></description><link>https://ta-toshio.github.io/blog//2018-08-29-phpstorm-xdebug/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-08-29-phpstorm-xdebug/</guid><pubDate>Wed, 29 Aug 2018 08:30:50 GMT</pubDate><content:encoded>&lt;h1&gt;docker for mac での実現方法&lt;/h1&gt;
-&lt;h1&gt;docker on vagrant での実現方法&lt;/h1&gt;</content:encoded></item><item><title><![CDATA[Letsencrypt]]></title><description><![CDATA[lets encryptについて lets encryptとは lets encryptの利用方法 今回利用した方法 課題]]></description><link>https://ta-toshio.github.io/blog//2018-08-16-letsencrypt/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-08-16-letsencrypt/</guid><pubDate>Thu, 16 Aug 2018 02:46:59 GMT</pubDate><content:encoded>&lt;h1&gt;lets encryptについて&lt;/h1&gt;
+&lt;p&gt;Webのテキスト文書を構造化してプログラムからも理解するための取り決めが行われていたということを学んだ。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Letsencrypt]]></title><description><![CDATA[lets encryptについて lets encryptとは lets encryptの利用方法 今回利用した方法 課題]]></description><link>https://ta-toshio.github.io/blog//2018-08-16-letsencrypt/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-08-16-letsencrypt/</guid><pubDate>Thu, 16 Aug 2018 02:46:59 GMT</pubDate><content:encoded>&lt;h1&gt;lets encryptについて&lt;/h1&gt;
 &lt;h2&gt;lets encryptとは&lt;/h2&gt;
 &lt;h2&gt;lets encryptの利用方法&lt;/h2&gt;
 &lt;h2&gt;今回利用した方法&lt;/h2&gt;
-&lt;h2&gt;課題&lt;/h2&gt;</content:encoded></item><item><title><![CDATA[Seo]]></title><description><![CDATA[SEO関連で行ったこと XMLサイトマップの追加
+&lt;h2&gt;課題&lt;/h2&gt;</content:encoded></item><item><title><![CDATA[Lumen Filesystem]]></title><description><![CDATA[Your next, great blog post goes here]]></description><link>https://ta-toshio.github.io/blog//2018-07-29-lumen-filesystem/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-07-29-lumen-filesystem/</guid><pubDate>Sun, 29 Jul 2018 05:20:11 GMT</pubDate><content:encoded>&lt;p&gt;Your next, great blog post goes here&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Aws Sdk Php Laravel]]></title><description><![CDATA[Lumenでs3を扱いたく、 https://github.com/aws/aws-sdk-php-laravel  を使用してみました。 ただ結局Filesystem…]]></description><link>https://ta-toshio.github.io/blog//2018-07-28-aws-sdk-php-laravel/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-07-28-aws-sdk-php-laravel/</guid><pubDate>Sat, 28 Jul 2018 04:17:58 GMT</pubDate><content:encoded>&lt;p&gt;Lumenでs3を扱いたく、&lt;a href=&quot;https://github.com/aws/aws-sdk-php-laravel&quot;&gt;https://github.com/aws/aws-sdk-php-laravel&lt;/a&gt; を使用してみました。&lt;/p&gt;
+&lt;p&gt;ただ結局Filesystemを使用してしまいまして、上のライブラリを利用しませんでしたが、一応記事として残しておきます。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;インストール&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;composer require aws/aws-sdk-php-laravel&lt;/p&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;サービスプロバイダーに登録&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;bootstrap/app.php&lt;/code&gt; に&lt;/p&gt;
+&lt;p&gt;$app-&gt;register(Aws\Laravel\AwsServiceProvider::class);&lt;/p&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;設定値を定義&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;config/aws.php に以下のような内容で設定&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;lt;?php
+
+use Aws\Laravel\AwsServiceProvider;
+
+return [
+    &amp;#39;credentials&amp;#39; =&amp;gt; [
+        &amp;#39;key&amp;#39;    =&amp;gt; env(&amp;#39;AWS_ACCESS_KEY_ID&amp;#39;),
+        &amp;#39;secret&amp;#39; =&amp;gt; env(&amp;#39;AWS_SECRET_ACCESS_KEY&amp;#39;),
+    ],
+    &amp;#39;region&amp;#39; =&amp;gt; env(&amp;#39;AWS_REGION&amp;#39;, &amp;#39;us-east-1&amp;#39;),
+    &amp;#39;version&amp;#39; =&amp;gt; &amp;#39;latest&amp;#39;,
+    &amp;#39;ua_append&amp;#39; =&amp;gt; [
+        &amp;#39;L5MOD/&amp;#39; . AwsServiceProvider::VERSION,
+    ],
+];&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;準備としては以上です。&lt;/p&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;使用方法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$this-&amp;gt;s3 = app()-&amp;gt;make(&amp;#39;aws&amp;#39;)-&amp;gt;createClient(&amp;#39;s3&amp;#39;);
+
+// バケット一覧
+$results = $this-&amp;gt;s3-&amp;gt;listBuckets();
+
+// アップロード
+$results = $this-&amp;gt;s3-&amp;gt;putObject([
+    &amp;#39;Key&amp;#39; =&amp;gt; &amp;#39;test/a/test.jpg&amp;#39;,
+    &amp;#39;Bucket&amp;#39; =&amp;gt; env(&amp;#39;AWS_BUCKET&amp;#39;),
+    &amp;#39;SourceFile&amp;#39; =&amp;gt; base_path() . &amp;#39;/tests/Data/480x640.jpg&amp;#39;,
+    &amp;#39;ACL&amp;#39; =&amp;gt; &amp;#39;public-read&amp;#39;,
+]);
+
+// 削除
+$result = $this-&amp;gt;s3-&amp;gt;deleteObjects([
+    &amp;#39;Bucket&amp;#39;  =&amp;gt; env(&amp;#39;AWS_BUCKET&amp;#39;),
+    &amp;#39;Delete&amp;#39; =&amp;gt; [
+        &amp;#39;Objects&amp;#39; =&amp;gt; [
+            [&amp;#39;Key&amp;#39; =&amp;gt; &amp;#39;test/a/test1.jpg&amp;#39;],
+            [&amp;#39;Key&amp;#39; =&amp;gt; &amp;#39;test/a/test2.jpg&amp;#39;],
+        ]
+    ],
+]);&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;5 モック&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$aws = Mockery::mock(&amp;#39;Aws\Sdk&amp;#39;);
+$this-&amp;gt;app-&amp;gt;instance(&amp;#39;aws&amp;#39;, $aws);&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;以上です。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Seo]]></title><description><![CDATA[SEO関連で行ったこと XMLサイトマップの追加
  
 参考にしたサイト https://promonista.com/glossary-sitemapxml/ https://www.seohacks.net/basic/terms/xml_sitemap/ Google…]]></description><link>https://ta-toshio.github.io/blog//2018-04-22-seo/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-04-22-seo/</guid><pubDate>Sun, 22 Apr 2018 02:30:44 GMT</pubDate><content:encoded>&lt;h1&gt;SEO関連で行ったこと&lt;/h1&gt;
 &lt;ul&gt;
