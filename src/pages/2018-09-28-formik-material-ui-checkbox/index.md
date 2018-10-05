@@ -1,7 +1,7 @@
 ---
 path: "/formik-material-ui-checkbox"
 date: "2018-09-28T07:08:48.353Z"
-title: "Formik Material Ui Checkbox"
+title: "formik-material-uiでのCheckboxの初期値"
 tags: ["formik", "material-ui"]
 ---
 
@@ -30,7 +30,7 @@ After: 修正したファイル
 
 https://github.com/stackworx/formik-material-ui/pull/27/files
 
-`gist:ta-toshio/723b712a37fcc171c18815477cec18f0#PRCheckbox.js`
+`gist:ta-toshio/723b712a37fcc171c18815477cec18f0#PRCheckbox.tsx`
 
 `FormControlLabel` が追加されていて、valueに `field.name`が設定されていますね。
 
