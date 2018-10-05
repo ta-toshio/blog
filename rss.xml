@@ -1,5 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Tue, 11 Sep 2018 14:16:36 GMT</lastBuildDate><item><title><![CDATA[Nextjs Redirect]]></title><description><![CDATA[next.jsを使う中でリダイレクト処理を扱う方法に、サーバー側で一工夫する箇所があるのだな、と気づきがあったので記事として残しておきます。 リダイレクト処理 サーバー側でリダイレクトされた場合の扱い  の箇所がポイント 使用例 引用元:
- https://github.com…]]></description><link>https://ta-toshio.github.io/blog//2018-09-11-nextjs-redirect/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-09-11-nextjs-redirect/</guid><pubDate>Tue, 11 Sep 2018 13:44:02 GMT</pubDate><content:encoded>&lt;p&gt;next.jsを使う中でリダイレクト処理を扱う方法に、サーバー側で一工夫する箇所があるのだな、と気づきがあったので記事として残しておきます。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Fri, 05 Oct 2018 03:17:05 GMT</lastBuildDate><item><title><![CDATA[Lumen Lighthouse Basecontroller]]></title><description><![CDATA[LumenでNuwave\Lighthouse…]]></description><link>https://ta-toshio.github.io/blog//2018-10-05-lumen-lighthouse-basecontroller/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-10-05-lumen-lighthouse-basecontroller/</guid><pubDate>Fri, 05 Oct 2018 02:33:23 GMT</pubDate><content:encoded>&lt;p&gt;LumenでNuwave\Lighthouseを使うときの注意事項です。&lt;/p&gt;
+&lt;h2&gt;問題&lt;/h2&gt;
+&lt;p&gt;コントローラーのエントリポイントにデフォルト設定のまま使うと、期待しない挙動が度々あったので調査の上修正しました。&lt;/p&gt;
+&lt;h2&gt;解決方法&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;config/lighthouse.php&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;#39;controller&amp;#39; =&amp;gt; &amp;#39;Nuwave\Lighthouse\Support\Http\Controllers\GraphQLController@query&amp;#39;,&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Nuwave\Lighthouse\Support\Http\Controllers\GraphQLController&lt;/code&gt; は&lt;code class=&quot;language-text&quot;&gt;Illuminate\Routing\Controller&lt;/code&gt; を継承していますが &lt;code class=&quot;language-text&quot;&gt;Laravel\Lumen\Routing\Controller&lt;/code&gt; を継承する必要があります。&lt;/p&gt;
+&lt;h2&gt;修正方法&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;config/lighthouse.php&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;#39;controller&amp;#39; =&amp;gt; &amp;#39;App\Http\GraphQL\GraphQLController@query&amp;#39;,&lt;/code&gt; を設定して、&lt;code class=&quot;language-text&quot;&gt;App\Http\GraphQL\GraphQLController&lt;/code&gt;を作成します。&lt;/p&gt;
+&lt;p&gt;中身は &lt;code class=&quot;language-text&quot;&gt;Nuwave\Lighthouse\Support\Http\Controllers\GraphQLController&lt;/code&gt; をコピペです。そして継承先を &lt;code class=&quot;language-text&quot;&gt;App\Http\Controllers\Controller&lt;/code&gt;にします。&lt;/p&gt;
+&lt;p&gt;正常動作のための一設定でした。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Nextjs Redirect]]></title><description><![CDATA[next.jsを使う中でリダイレクト処理を扱う方法に、サーバー側で一工夫する箇所があるのだな、と気づきがあったので記事として残しておきます。 リダイレクト処理 リダイレクトされた場合の扱い  の箇所がポイント 使用例 引用元:
+ https://github.com/zeit…]]></description><link>https://ta-toshio.github.io/blog//2018-09-11-nextjs-redirect/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-09-11-nextjs-redirect/</guid><pubDate>Tue, 11 Sep 2018 13:44:02 GMT</pubDate><content:encoded>&lt;p&gt;next.jsを使う中でリダイレクト処理を扱う方法に、サーバー側で一工夫する箇所があるのだな、と気づきがあったので記事として残しておきます。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;リダイレクト処理&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist91842182&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot;&gt;
@@ -8,7 +21,7 @@
   &lt;div id=&quot;file-redirect-js&quot; class=&quot;file&quot;&gt;
     
 
-  &lt;div itemprop=&quot;text&quot; class=&quot;blob-wrapper data type-javascript&quot;&gt;
+  &lt;div itemprop=&quot;text&quot; class=&quot;blob-wrapper data type-javascript &quot;&gt;
       &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot;&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-redirect-js-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
@@ -80,7 +93,7 @@
     &lt;/div&gt;
 &lt;/div&gt;
 &lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;サーバー側でリダイレクトされた場合の扱い&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;リダイレクトされた場合の扱い&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;if (res &amp;amp;&amp;amp; res.finished) {&lt;/code&gt; の箇所がポイント&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist91842182&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot;&gt;
@@ -89,7 +102,7 @@
   &lt;div id=&quot;file-hoc-js&quot; class=&quot;file&quot;&gt;
     
 
-  &lt;div itemprop=&quot;text&quot; class=&quot;blob-wrapper data type-javascript&quot;&gt;
+  &lt;div itemprop=&quot;text&quot; class=&quot;blob-wrapper data type-javascript &quot;&gt;
       &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot;&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-hoc-js-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
@@ -246,7 +259,7 @@
   &lt;div id=&quot;file-sample-use-js&quot; class=&quot;file&quot;&gt;
     
 
-  &lt;div itemprop=&quot;text&quot; class=&quot;blob-wrapper data type-javascript&quot;&gt;
+  &lt;div itemprop=&quot;text&quot; class=&quot;blob-wrapper data type-javascript &quot;&gt;
       &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot;&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-sample-use-js-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
