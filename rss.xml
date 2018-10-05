@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Fri, 05 Oct 2018 04:50:55 GMT</lastBuildDate><item><title><![CDATA[Aws Sdk Php Laravel]]></title><description><![CDATA[lumenでs3を扱いたく、 https://github.com/aws/aws-sdk-php-laravel  を使用してみました。 ただ結局Filesystem…]]></description><link>https://ta-toshio.github.io/blog//2018-09-28-aws-sdk-php-laravel/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-09-28-aws-sdk-php-laravel/</guid><pubDate>Fri, 28 Sep 2018 04:17:58 GMT</pubDate><content:encoded>&lt;p&gt;lumenでs3を扱いたく、&lt;a href=&quot;https://github.com/aws/aws-sdk-php-laravel&quot;&gt;https://github.com/aws/aws-sdk-php-laravel&lt;/a&gt; を使用してみました。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Fri, 05 Oct 2018 05:14:02 GMT</lastBuildDate><item><title><![CDATA[Aws Sdk Php Laravel]]></title><description><![CDATA[lumenでs3を扱いたく、 https://github.com/aws/aws-sdk-php-laravel  を使用してみました。 ただ結局Filesystem…]]></description><link>https://ta-toshio.github.io/blog//2018-09-28-aws-sdk-php-laravel/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-09-28-aws-sdk-php-laravel/</guid><pubDate>Fri, 28 Sep 2018 04:17:58 GMT</pubDate><content:encoded>&lt;p&gt;lumenでs3を扱いたく、&lt;a href=&quot;https://github.com/aws/aws-sdk-php-laravel&quot;&gt;https://github.com/aws/aws-sdk-php-laravel&lt;/a&gt; を使用してみました。&lt;/p&gt;
 &lt;p&gt;ただ結局Filesystemを使用してしまいまして、上のライブラリを利用しませんでしたが、一応記事として残しておきます。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;インストール&lt;/li&gt;
@@ -381,7 +381,118 @@ $this-&amp;gt;app-&amp;gt;instance(&amp;#39;aws&amp;#39;, $aws);&lt;/code&gt;&lt
 &lt;/div&gt;
 &lt;/p&gt;
 &lt;p&gt;引用元:
-&lt;a href=&quot;https://github.com/zeit/next.js/tree/canary/examples/with-apollo-auth&quot;&gt;https://github.com/zeit/next.js/tree/canary/examples/with-apollo-auth&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Remote Debugger With Phpstorm And Vagrant]]></title><description><![CDATA[前回の続きで]]></description><link>https://ta-toshio.github.io/blog//2018-09-06-remote-debugger-with-phpstorm-and-vagrant/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-09-06-remote-debugger-with-phpstorm-and-vagrant/</guid><pubDate>Thu, 06 Sep 2018 06:10:24 GMT</pubDate><content:encoded>&lt;p&gt;前回の続きで&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Remote Debugger With Phpstorm]]></title><description><![CDATA[PhpStormでステップ実行でのデバッグをするための解説です。
+&lt;a href=&quot;https://github.com/zeit/next.js/tree/canary/examples/with-apollo-auth&quot;&gt;https://github.com/zeit/next.js/tree/canary/examples/with-apollo-auth&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Remote Debugger With Phpstorm And Vagrant]]></title><description><![CDATA[前回の続きで、今回はVagrantで作成した仮想環境内にDockerをインストールして、その中でphpコンテナ、nginxコンテナを用意してリモートデバッグをした記事になります。 動作環境 Docker (Docker version 18.06.0-ce, build 0ffa…]]></description><link>https://ta-toshio.github.io/blog//2018-09-06-remote-debugger-with-phpstorm-and-vagrant/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-09-06-remote-debugger-with-phpstorm-and-vagrant/</guid><pubDate>Thu, 06 Sep 2018 06:10:24 GMT</pubDate><content:encoded>&lt;p&gt;前回の続きで、今回はVagrantで作成した仮想環境内にDockerをインストールして、その中でphpコンテナ、nginxコンテナを用意してリモートデバッグをした記事になります。&lt;/p&gt;
+&lt;p&gt;動作環境&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Docker (Docker version 18.06.0-ce, build 0ffa825)&lt;/li&gt;
+&lt;li&gt;Docker-Compoe (docker-compose version 1.21.2, build a133471)&lt;/li&gt;
+&lt;li&gt;Vagrant (Version: 2.1.1)&lt;/li&gt;
+&lt;li&gt;PhpStorm (Version: PhpStorm 2018.1.6)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;PHPが動作しているコンテナでxdebug.iniを適用&lt;/p&gt;
+&lt;p&gt;&lt;div id=&quot;gist92295319&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-xdebug-ini&quot; class=&quot;file&quot;&gt;
+    
+
+  &lt;div itemprop=&quot;text&quot; class=&quot;blob-wrapper data type-ini &quot;&gt;
+      &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot;&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-xdebug-ini-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-xdebug-ini-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;;&lt;/span&gt; NOTE: The actual debug.so extention is NOT SET HERE but rather (/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini)&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-xdebug-ini-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-xdebug-ini-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-xdebug-ini-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-xdebug-ini-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;xdebug.remote_connect_back&lt;/span&gt;=1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-xdebug-ini-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-xdebug-ini-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;xdebug.remote_port&lt;/span&gt;=9000&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-xdebug-ini-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-xdebug-ini-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;xdebug.idekey&lt;/span&gt;=PHPSTORM&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-xdebug-ini-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-xdebug-ini-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-xdebug-ini-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-xdebug-ini-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;xdebug.remote_autostart&lt;/span&gt;=1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-xdebug-ini-L8&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-xdebug-ini-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;xdebug.remote_enable&lt;/span&gt;=1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-xdebug-ini-L9&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-xdebug-ini-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;xdebug.cli_color&lt;/span&gt;=0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-xdebug-ini-L10&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-xdebug-ini-LC10&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;xdebug.profiler_enable&lt;/span&gt;=0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-xdebug-ini-L11&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-xdebug-ini-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;xdebug.profiler_output_dir&lt;/span&gt;=&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;~/xdebug/phpstorm/tmp/profiling&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-xdebug-ini-L12&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-xdebug-ini-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-xdebug-ini-L13&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;13&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-xdebug-ini-LC13&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;xdebug.remote_handler&lt;/span&gt;=dbgp&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-xdebug-ini-L14&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;14&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-xdebug-ini-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;xdebug.remote_mode&lt;/span&gt;=req&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-xdebug-ini-L15&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;15&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-xdebug-ini-LC15&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-xdebug-ini-L16&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;16&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-xdebug-ini-LC16&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;xdebug.var_display_max_children&lt;/span&gt;=-1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-xdebug-ini-L17&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;17&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-xdebug-ini-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;xdebug.var_display_max_data&lt;/span&gt;=-1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-xdebug-ini-L18&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;18&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-xdebug-ini-LC18&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;xdebug.var_display_max_depth&lt;/span&gt;=-1&lt;/td&gt;
+      &lt;/tr&gt;
+&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/ta-toshio/01e928732bddb03b1f2a5dd461d9a5e0/raw/d5d10cfe81ea980ba5e3c808b145776a616deca6/xdebug.ini&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/ta-toshio/01e928732bddb03b1f2a5dd461d9a5e0#file-xdebug-ini&quot;&gt;xdebug.ini&lt;/a&gt;
+        hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;その他は前回と同様になります。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Remote Debugger With Phpstorm]]></title><description><![CDATA[PhpStormでステップ実行でのデバッグをするための解説です。
 度々忘れるので記事にします。 動作環境 Docker on Mac (Version: 18.06.0-ce-mac70 (26399)) PhpStorm (Version: PhpStorm 2018.1.…]]></description><link>https://ta-toshio.github.io/blog//2018-09-05-remote-debugger-with-phpstorm/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-09-05-remote-debugger-with-phpstorm/</guid><pubDate>Wed, 05 Sep 2018 08:01:51 GMT</pubDate><content:encoded>&lt;p&gt;PhpStormでステップ実行でのデバッグをするための解説です。
 度々忘れるので記事にします。&lt;/p&gt;
 &lt;p&gt;動作環境&lt;/p&gt;
@@ -417,7 +528,7 @@ $this-&amp;gt;app-&amp;gt;instance(&amp;#39;aws&amp;#39;, $aws);&lt;/code&gt;&lt
   &lt;div id=&quot;file-php-fpm-dockerfile&quot; class=&quot;file&quot;&gt;
     
 
-  &lt;div itemprop=&quot;text&quot; class=&quot;blob-wrapper data type-text&quot;&gt;
+  &lt;div itemprop=&quot;text&quot; class=&quot;blob-wrapper data type-text &quot;&gt;
       &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot;&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-php-fpm-dockerfile-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
@@ -502,7 +613,7 @@ $this-&amp;gt;app-&amp;gt;instance(&amp;#39;aws&amp;#39;, $aws);&lt;/code&gt;&lt
   &lt;div id=&quot;file-xdebug-ini&quot; class=&quot;file&quot;&gt;
     
 
-  &lt;div itemprop=&quot;text&quot; class=&quot;blob-wrapper data type-ini&quot;&gt;
+  &lt;div itemprop=&quot;text&quot; class=&quot;blob-wrapper data type-ini &quot;&gt;
       &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot;&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-xdebug-ini-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
