@@ -1,7 +1,7 @@
 ---
 path: "/formik-material-ui-checkbox"
 date: "2018-09-28T07:08:48.353Z"
-title: "formik-material-uiでのCheckboxの初期値"
+title: "Formik Material Ui Checkbox"
 tags: ["formik", "material-ui"]
 ---
 
