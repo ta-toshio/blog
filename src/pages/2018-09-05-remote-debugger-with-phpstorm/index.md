@@ -2,7 +2,7 @@
 path: "/remote-debugger-with-phpstorm"
 date: "2018-09-05T08:01:51.284Z"
 title: "Remote Debugger With Phpstorm"
-tags: []
+tags: ["php", "debug"]
 ---
 
 PhpStormでステップ実行でのデバッグをするための解説です。
