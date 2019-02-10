@@ -1,6 +1,6 @@
 ---
 path: "/create-vpc-private-subnet-and-ec-2"
-date: "2019-02-10T08:37:02.076Z"
+date: "2019-02-09T08:37:02.076Z"
 title: "Create Vpc Private Subnet And Ec 2"
 tags: []
 ---

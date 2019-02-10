@@ -1,6 +1,6 @@
 ---
 path: "/create-vpc-public-subnet-and-ec-2"
-date: "2019-02-10T08:36:55.056Z"
+date: "2019-02-08T08:36:55.056Z"
 title: "Create Vpc Public Subnet And Ec 2"
 tags: []
 ---
