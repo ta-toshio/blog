@@ -1,5 +1,122 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Sun, 10 Feb 2019 14:19:26 GMT</lastBuildDate><item><title><![CDATA[Create Vpc Private Subnet And Ec 2]]></title><description><![CDATA[理解を深めるための備忘録です。
-こちらの講座をもとに作業しました。詳しい解説はそちらを閲覧してください。（有料です） https://www.udemy.com/aws-14days…]]></description><link>https://ta-toshio.github.io/blog//2019-02-10-create-vpc-private-subnet-and-ec-2/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-10-create-vpc-private-subnet-and-ec-2/</guid><pubDate>Sun, 10 Feb 2019 08:37:02 GMT</pubDate><content:encoded>&lt;p&gt;理解を深めるための備忘録です。
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Sun, 10 Feb 2019 14:51:39 GMT</lastBuildDate><item><title><![CDATA[Aws Ami 2 Install Mysql 57]]></title><description><![CDATA[Amazon Linux 2 AMI (HVM)にMysql5.7のインストール こちらの記事を参考に作業しました。
+ https://qiita.com/2no553/items/952dbb8df9a228195189 他参考
+ https://qiita.com…]]></description><link>https://ta-toshio.github.io/blog//2019-02-10-aws-ami-2-install-mysql-57/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-10-aws-ami-2-install-mysql-57/</guid><pubDate>Sun, 10 Feb 2019 14:22:25 GMT</pubDate><content:encoded>&lt;p&gt;Amazon Linux 2 AMI (HVM)にMysql5.7のインストール&lt;/p&gt;
+&lt;p&gt;こちらの記事を参考に作業しました。
+&lt;a href=&quot;https://qiita.com/2no553/items/952dbb8df9a228195189&quot;&gt;https://qiita.com/2no553/items/952dbb8df9a228195189&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;#mariadbがインストールされているか確認
+$ yum list installed | grep mariadb
+mariadb-libs.x86_64                   1:5.5.56-2.amzn2                 installed
+
+#mysqlがインストールされているか確認
+$ yum list installed | grep mysql
+
+#mysqlがインストールできるか確認
+$ yum info mysql
+読み込んだプラグイン:extras_suggestions, langpacks, priorities, update-motd
+エラー: 表示するパッケージはありません
+
+#mysql8.0リポジトリの追加（このリポジトリに5.7も含まれています）
+$ sudo yum localinstall https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm -y
+
+#mysql8.0リポジトリの無効化
+$ sudo yum-config-manager --disable mysql80-community
+
+#mysql5.7リポジトリの有効化
+$ sudo yum-config-manager --enable mysql57-community
+
+#mysql5.7がインストールできるか確認
+$ yum info mysql-community-server
+
+#mysqlインストール
+$ sudo yum install mysql-community-server -y
+$ mysqld --version
+mysqld  Ver 5.7.22 for Linux on x86_64 (MySQL Community Server (GPL))
+
+#自動起動設定
+$ sudo systemctl start mysqld.service
+$ sudo systemctl enable mysqld.service
+$ systemctl status mysqld.service
+
+
+#rootパスワードを確認
+$ cat /var/log/mysqld.log | grep password
+A temporary password is generated for root@localhost: ************
+
+#初期設定
+$ mysql_secure_installation
+Enter password for user root: ************
+New password: @@@@@@@@@@@@
+Re-enter new password: @@@@@@@@@@@@
+Change the password for root ? ((Press y|Y for Yes, any other key for No) : No
+Remove anonymous users? (Press y|Y for Yes, any other key for No) : Yes
+Disallow root login remotely? (Press y|Y for Yes, any other key for No) : Yes
+Remove test database and access to it? (Press y|Y for Yes, any other key for No) : Yes
+Reload privilege tables now? (Press y|Y for Yes, any other key for No) : Yes
+
+
+#mysqlにログイン
+$ mysql -u root -p
+Enter password: @@@@@@@@@@@@
+
+#文字コードの確認
+mysql&amp;gt; show global variables like &amp;#39;character%&amp;#39;;
++--------------------------+----------------------------+
+| Variable_name            | Value                      |
++--------------------------+----------------------------+
+| character_set_client     | latin1                     |
+| character_set_connection | latin1                     |
+| character_set_database   | latin1                     |
+| character_set_filesystem | binary                     |
+| character_set_results    | latin1                     |
+| character_set_server     | latin1                     |
+| character_set_system     | utf8                       |
+| character_sets_dir       | /usr/share/mysql/charsets/ |
++--------------------------+----------------------------+
+mysql&amp;gt; exit
+
+#文字コードの変更（[mysqld]と[client]セクションと設定を追加）
+$ sudo vi /etc/my.cnf
++ [mysqld] （既に記述されている場合は省略）
++ character_set_server=utf8mb4
+
++ [client]
++ default-character-set=utf8mb4
+
+#mysql再起動
+$ sudo systemctl restart mysqld.service
+
+#mysqlにログイン
+$ mysql -u root -p
+Enter password: @@@@@@@@@@@@
+
+#文字コードの確認
+mysql&amp;gt; show global variables like &amp;#39;character%&amp;#39;;
++--------------------------+----------------------------+
+| Variable_name            | Value                      |
++--------------------------+----------------------------+
+| character_set_client     | utf8mb4                    |
+| character_set_connection | utf8mb4                    |
+| character_set_database   | utf8mb4                    |
+| character_set_filesystem | binary                     |
+| character_set_results    | utf8mb4                    |
+| character_set_server     | utf8mb4                    |
+| character_set_system     | utf8                       |
+| character_sets_dir       | /usr/share/mysql/charsets/ |
++--------------------------+----------------------------+
+
+# データベース作成
+mysql&amp;gt; CREATE DATABASE データベース名 CHARACTER SET utf8mb4;
+
+# 作業ユーザーに権限を付与（一緒にユーザーも作成される）
+mysql&amp;gt; GRANT ALL PRIVILEGES ON データベース名.* TO ユーザー名@&amp;#39;IP or DNS名 or %&amp;#39; identified by &amp;#39;パスワード&amp;#39; with grant option;
+
+
+mysql&amp;gt; exit&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;他参考
+&lt;a href=&quot;https://qiita.com/himatani/items/e1e650992dbc12b8a9b3&quot;&gt;https://qiita.com/himatani/items/e1e650992dbc12b8a9b3&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Create Vpc Private Subnet And Ec 2]]></title><description><![CDATA[理解を深めるための備忘録です。
+こちらの講座をもとに作業しました。詳しい解説はそちらを閲覧してください。（有料です） https://www.udemy.com/aws-14days…]]></description><link>https://ta-toshio.github.io/blog//2019-02-09-create-vpc-private-subnet-and-ec-2/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-09-create-vpc-private-subnet-and-ec-2/</guid><pubDate>Sat, 09 Feb 2019 08:37:02 GMT</pubDate><content:encoded>&lt;p&gt;理解を深めるための備忘録です。
 こちらの講座をもとに作業しました。詳しい解説はそちらを閲覧してください。（有料です）&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.udemy.com/aws-14days/&quot;&gt;https://www.udemy.com/aws-14days/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;前回の続きでう。&lt;/p&gt;
@@ -101,7 +218,7 @@
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52534696-10131900-2d88-11e9-9d54-dab9cac48498.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;NATゲートウェイ作成時に、Elastic IPも作成したが、NATゲートウェイの削除が完了した後Elastic IPも削除されたこと確認した。&lt;/p&gt;
 &lt;p&gt;以上になります。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Create Vpc Public Subnet And Ec 2]]></title><description><![CDATA[理解を深めるための備忘録です。
-こちらの講座をもとに作業しました。詳しい解説はそちらを閲覧してください。（有料です） https://www.udemy.com/aws-14days/ VPCをつくる 独立したネットワークを構築するができるもの。 サブネット IP…]]></description><link>https://ta-toshio.github.io/blog//2019-02-10-create-vpc-public-subnet-and-ec-2/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-10-create-vpc-public-subnet-and-ec-2/</guid><pubDate>Sun, 10 Feb 2019 08:36:55 GMT</pubDate><content:encoded>&lt;p&gt;理解を深めるための備忘録です。
+こちらの講座をもとに作業しました。詳しい解説はそちらを閲覧してください。（有料です） https://www.udemy.com/aws-14days/ VPCをつくる 独立したネットワークを構築するができるもの。 サブネット IP…]]></description><link>https://ta-toshio.github.io/blog//2019-02-08-create-vpc-public-subnet-and-ec-2/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-08-create-vpc-public-subnet-and-ec-2/</guid><pubDate>Fri, 08 Feb 2019 08:36:55 GMT</pubDate><content:encoded>&lt;p&gt;理解を深めるための備忘録です。
 こちらの講座をもとに作業しました。詳しい解説はそちらを閲覧してください。（有料です）&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.udemy.com/aws-14days/&quot;&gt;https://www.udemy.com/aws-14days/&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;VPCをつくる&lt;/h3&gt;
