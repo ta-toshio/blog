@@ -1,4 +1,225 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Fri, 05 Oct 2018 07:51:05 GMT</lastBuildDate><item><title><![CDATA[formik-material-uiでのCheckboxの初期値]]></title><description><![CDATA[material-uiとformikを苦労なくつなぎこみたい場合、以下のモジュールがあります。 https://github.com/stackworx/formik-material-ui ただ2018/09の時点ではcheckbox…]]></description><link>https://ta-toshio.github.io/blog//2018-09-28-formik-material-ui-checkbox/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-09-28-formik-material-ui-checkbox/</guid><pubDate>Fri, 28 Sep 2018 07:08:48 GMT</pubDate><content:encoded>&lt;p&gt;material-uiとformikを苦労なくつなぎこみたい場合、以下のモジュールがあります。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Sun, 10 Feb 2019 14:19:26 GMT</lastBuildDate><item><title><![CDATA[Create Vpc Private Subnet And Ec 2]]></title><description><![CDATA[理解を深めるための備忘録です。
+こちらの講座をもとに作業しました。詳しい解説はそちらを閲覧してください。（有料です） https://www.udemy.com/aws-14days…]]></description><link>https://ta-toshio.github.io/blog//2019-02-10-create-vpc-private-subnet-and-ec-2/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-10-create-vpc-private-subnet-and-ec-2/</guid><pubDate>Sun, 10 Feb 2019 08:37:02 GMT</pubDate><content:encoded>&lt;p&gt;理解を深めるための備忘録です。
+こちらの講座をもとに作業しました。詳しい解説はそちらを閲覧してください。（有料です）&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.udemy.com/aws-14days/&quot;&gt;https://www.udemy.com/aws-14days/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;前回の続きでう。&lt;/p&gt;
+&lt;h3&gt;プライベートサブネットをつくる&lt;/h3&gt;
+&lt;h4&gt;方針&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;プライベートサブネットをつくる&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;プライベートサブネット内にEC2をつくる&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;プライベートサブネットからVPCの外に出るためパブリックサブネットにNAT Gatewayをつくる&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;作業&lt;/h4&gt;
+&lt;h5&gt;プライベートサブネットをつくる&lt;/h5&gt;
+&lt;p&gt;「サブネットの作成」からプライベートサブネットを作成する&lt;/p&gt;
+&lt;p&gt;入力画面&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52531819-d11c9d80-2d5e-11e9-904e-b7c22ca05ffc.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;VPCは前回作成したものを選択して、アベイラビリティゾーン1aを選択。保存後、続いてアベイラビリティゾーン1cに作成する。&lt;/p&gt;
+&lt;p&gt;入力画面&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52531820-d11c9d80-2d5e-11e9-8e7e-d19ede5df889.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;作成されたもの確認&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52531821-d1b53400-2d5e-11e9-851f-0ef233fe1d18.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;次に、上で自動でルートテーブルが作られたが、ルートテーブルを新規に作成してプライベートサブネットに利用させる&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52531940-72582380-2d60-11e9-91c3-e192db77f285.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;作成されたルートテーブル確認。比較としてpublic用のルーティング設定とprivate用のルーティング設定を下記に。&lt;/p&gt;
+&lt;p&gt;パブリック用ルーティング
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52531941-72582380-2d60-11e9-864f-4ef03337d7f1.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;プライベート用ルーティング
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52531943-7421e700-2d60-11e9-8d32-df83b1f78350.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;プライベートサブネットに今作ったルートテーブルを適用させる&lt;/p&gt;
+&lt;p&gt;サブネット画面のmy-private-subnet-1aを選択して、「ルートテーブルの関連付けの編集」を押下、&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;ルートテーブルIDに、上で作成したプライベート用ルートテーブルを選択、保存&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52532019-ab44c800-2d61-11e9-885d-7d4d33afcb04.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;設定されたことを確認&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52532021-abdd5e80-2d61-11e9-93ee-1063d8064a89.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;my-private-subnet-1cも同様にプライベート用ルートテーブルを設定させる。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52532022-abdd5e80-2d61-11e9-8234-fcbfb101dde2.png&quot;&gt;&lt;/p&gt;
+&lt;h5&gt;プライベートサブネット内にEC2をつくる&lt;/h5&gt;
+&lt;p&gt;Amazon Linux 2 AMI (HVM), SSD Volume Type を選択&lt;/p&gt;
+&lt;p&gt;お好きなインスタンスタイプを選択&lt;/p&gt;
+&lt;p&gt;VPCは前回作成したVPC
+ネットワークはprivateサブネットの1a
+パプリックIP自動割当は、このサーバーはグローバルにさらす必要がないので、無効化を選択。他はそのままで次に。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52532241-0e842980-2d65-11e9-82cb-fa22519c85d8.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;タグはDB-1aと入力&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52532242-0e842980-2d65-11e9-9ba4-1a375932e747.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;セキュリティーグループは新規に作成。
+前回作成したセキュリティーグループ「web-sg」が設定されているインスタンスのみ（今回はsshとmysqlの）通信を許可する、という振る舞いをしたいので、ソースの入力欄でweb-sgを選択。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52532243-0e842980-2d65-11e9-9fc1-29edc91e93bf.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;他は特に変更せず作成。作成されているか確認&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52532244-0e842980-2d65-11e9-9dce-f4eae487d21b.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;web-1aのサーバーを踏み台にしてdb-1aのサーバーにsshログインできるか確認&lt;/p&gt;
+&lt;p&gt;db-1aにログインするためにはweb-1aに秘密鍵をコピー（アップロード）する必要がある&lt;/p&gt;
+&lt;p&gt;現時点では、db-1a内からインターネットの外にいくことができないこと確認&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ ping yahoo.co.jp
+~~
+^C
+--- yahoo.co.jp ping statistics ---
+4 packets transmitted, 0 received, 100% packet loss, time 3054ms&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h5&gt;プライベートサブネットからVPCの外に出るためパブリックサブネットにNAT Gatewayをつくる&lt;/h5&gt;
+&lt;p&gt;パブリックサブネット1aのサブネットIDをコピーしておく&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52534390-549cb580-2d84-11e9-968c-f21455b84ad9.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;NAT Gatewayの作成&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52534391-55cde280-2d84-11e9-897f-33d475214eb7.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;入力画面&lt;/p&gt;
+&lt;p&gt;サブネットにさきほどコピーしておいたサブネットIDを入力（貼り付け）&lt;/p&gt;
+&lt;p&gt;NAT Gatewayが外に出ていくためのプロキシーサーバーとして振る舞ってくれる。グローバルIPが必要とのことなので、「新しいEIPの作成」ボタンを押下。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52534392-56667900-2d84-11e9-9c63-2659588b8b3b.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52534394-56667900-2d84-11e9-83c8-bf18205eea4d.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;作成後、「ルートテーブルの編集」ボタン押下。&lt;/p&gt;
+&lt;p&gt;5.png
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52534395-56667900-2d84-11e9-8851-670a1e4de933.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;プライベートサブネットでNAT Gatewayを利用していくので、private-subnetを選択、ルート（Routes）タブから「Edit routes」ボタン押下。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52534396-56667900-2d84-11e9-82fc-c76bacd5a27e.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;入力画面&lt;/p&gt;
+&lt;p&gt;VPC内の通信はそのまま許可します、他はNATゲートウェイを通ります、という設定をする&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52534397-56ff0f80-2d84-11e9-8230-1b8299cc4712.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;パブリックサブネットとプライベートサブネットの比較
+パブリックサブネットはインターネットゲートウェイを利用していて、プライベートサブネットはNATゲートウェイという設定になっている&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52534398-56ff0f80-2d84-11e9-9f57-b71b172ddf94.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52534399-56ff0f80-2d84-11e9-80cc-ba87cb72de9b.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;外に接続できることを確認。&lt;/p&gt;
+&lt;p&gt;一応NATゲートウェイのスクショもとっておく&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52534691-0ee1ec00-2d88-11e9-95de-ffef4a093b0b.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;プライベートサブネット内で外へ出ていく作業も終えたらNATゲートウェイを削除してしまう。（コスト削減のため）&lt;/p&gt;
+&lt;p&gt;NATゲートウェイ削除したら、プライベートサブネットに適用しているルートテーブルのルーティング設定も修正する。&lt;/p&gt;
+&lt;p&gt;プライベートサブネットのルートテーブルを選択し、「Edit Routes」ボタンを押下&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52534692-0ee1ec00-2d88-11e9-9fd2-6ed74a352151.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;NATゲートウェイの振り分けレコードを削除して保存&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52534693-0f7a8280-2d88-11e9-96c1-8539514de0ba.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52534694-0f7a8280-2d88-11e9-88f6-e8d4a88f6a84.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52534696-10131900-2d88-11e9-9d54-dab9cac48498.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;NATゲートウェイ作成時に、Elastic IPも作成したが、NATゲートウェイの削除が完了した後Elastic IPも削除されたこと確認した。&lt;/p&gt;
+&lt;p&gt;以上になります。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Create Vpc Public Subnet And Ec 2]]></title><description><![CDATA[理解を深めるための備忘録です。
+こちらの講座をもとに作業しました。詳しい解説はそちらを閲覧してください。（有料です） https://www.udemy.com/aws-14days/ VPCをつくる 独立したネットワークを構築するができるもの。 サブネット IP…]]></description><link>https://ta-toshio.github.io/blog//2019-02-10-create-vpc-public-subnet-and-ec-2/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-10-create-vpc-public-subnet-and-ec-2/</guid><pubDate>Sun, 10 Feb 2019 08:36:55 GMT</pubDate><content:encoded>&lt;p&gt;理解を深めるための備忘録です。
+こちらの講座をもとに作業しました。詳しい解説はそちらを閲覧してください。（有料です）&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.udemy.com/aws-14days/&quot;&gt;https://www.udemy.com/aws-14days/&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;VPCをつくる&lt;/h3&gt;
+&lt;p&gt;独立したネットワークを構築するができるもの。&lt;/p&gt;
+&lt;h3&gt;サブネット&lt;/h3&gt;
+&lt;p&gt;IPレンジを利用したネットワーク帯域。&lt;/p&gt;
+&lt;p&gt;サブネットにはルートテーブルというものを持っている。ルートテーブルには、通信の経路を設定できる。&lt;/p&gt;
+&lt;h3&gt;パブリックサブネット&lt;/h3&gt;
+&lt;p&gt;Internet Gatewayというサービスを利用して、VPCの外から入ってくることも、外へ出ることも許可する。&lt;/p&gt;
+&lt;p&gt;外から入るものに関しては、入って良いものを定義してあげる。&lt;/p&gt;
+&lt;h3&gt;プライベートサブネット&lt;/h3&gt;
+&lt;p&gt;基本、VPC内の通信のみしか許可しない。外へ出ることを許可するためにはNAT Gatewayというサービスを利用する。&lt;/p&gt;
+&lt;h3&gt;目的のネットワーク&lt;/h3&gt;
+&lt;p&gt;インターネットゲートウェイ
+アベイラビリティゾーン1aと1cにパブリックサブネット&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;アベイラビリティゾーン1aにEC2&lt;/li&gt;
+&lt;li&gt;Nat GW
+アベイラビリティゾーン1aと1cにプライベートサブネット&lt;/li&gt;
+&lt;li&gt;アベイラビリティゾーン1aにEC2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;パブリックサブネットをつくる&lt;/h3&gt;
+&lt;h4&gt;方針&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;VPCを作成する&lt;/li&gt;
+&lt;li&gt;アベイラビリティゾーン1aにパブリックサブネットを作成する&lt;/li&gt;
+&lt;li&gt;Internet GWも作成する&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;別のアベイラビリティゾーン（1c）にも場ブリックサブネットを作成する&lt;/p&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;アベイラビリティゾーン1cにパブリックサブネットを作成する&lt;/li&gt;
+&lt;li&gt;新規で作った場合はInternet GWに向いていないので、ルートテーブルを修正する&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;作業&lt;/h4&gt;
+&lt;p&gt;ウィザード
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52530667-1aafbd00-2d4c-11e9-8d7f-e1b799e4190a.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;入力内容
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52530668-1aafbd00-2d4c-11e9-9817-7caf98d76677.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;作成されたVPC確認
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52530670-1b485380-2d4c-11e9-895a-331b79c89b48.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;作成されたサブネット確認
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52530671-1b485380-2d4c-11e9-8259-a0962bcef880.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;作成されたインターネットゲートウェイ確認
+あと名前をつけた
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52530672-1be0ea00-2d4c-11e9-9b08-f558d7f3d4f2.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;作成されたルートテーブル確認
+あとな名前をつけた
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52530673-1be0ea00-2d4c-11e9-8ecf-36df1fb6f764.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;ルートテーブル設定内容の確認
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52530674-1be0ea00-2d4c-11e9-88ba-16885ea4351e.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Destination: 10.0.0.0/16, Target: Local
+&lt;br /&gt;
+Destination: 0.0.0.0/0, Target: igw-xxx
+&lt;br /&gt;
+VPC中の接続は、そのままLocalの接続。その他はインターネットゲートウェイに出ていくように、という内容&lt;/p&gt;
+&lt;p&gt;アベイラビリティゾーン1cにもパブリックサブネットを作成する&lt;/p&gt;
+&lt;p&gt;新規にサブネットの作成
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52530850-5dbf5f80-2d4f-11e9-8c6a-3c240a42450d.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;注意点はVPCの選択は上で作成したVPC&lt;/p&gt;
+&lt;p&gt;作成されたアベイラビリティゾーン1cのサブネット
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52530851-5dbf5f80-2d4f-11e9-94f0-1c075107f2fb.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;ただ先程作成したアベイラビリティゾーン1aのサブネットと違うところは、インターネットゲートウェイの項目が存在しない&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52530852-5dbf5f80-2d4f-11e9-91cd-fbff75f6c8b3.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;インターネットゲートウェイの設定を追加するために「ルートテーブルの関連付けの編集」ボタンを押下する&lt;/p&gt;
+&lt;p&gt;入力画面
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52530853-5e57f600-2d4f-11e9-90f9-c996a4867845.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;ルートテーブルIDに1aのサブネットした時に作成されたインターネットゲートウェイを選択。&lt;/p&gt;
+&lt;p&gt;（名前がmy-rtb-for-subnet-1aとしたが、1cでも同じルートテーブルを使うのであれば、my-rtb-for-public-subnetという名前のほうがよさそう。あとで変更する）&lt;/p&gt;
+&lt;p&gt;選択後、igw-xxxの行が追加された
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52530854-5e57f600-2d4f-11e9-9904-af469c8d540a.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;編集されたルートテーブルの設定を確認。インターネットゲートウェイの項目が追加されていること確認。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://user-images.githubusercontent.com/37950257/52531195-02906b80-2d55-11e9-9005-ad982e44f84a.png&quot;&gt;https://user-images.githubusercontent.com/37950257/52531195-02906b80-2d55-11e9-9005-ad982e44f84a.png&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;パブリックサブネットの1aにEC2をつくる&lt;/h3&gt;
+&lt;p&gt;方針&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;EC2をつくる&lt;/li&gt;
+&lt;li&gt;VPCやサブネットを指定する&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;作業&lt;/p&gt;
+&lt;p&gt;Amazon Linux 2 AMI (HVM), SSD Volume Typeを選択&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52531197-03290200-2d55-11e9-9b97-e219c295af77.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;お好きなインスタイプを選択&lt;/p&gt;
+&lt;p&gt;入力画面&lt;/p&gt;
+&lt;p&gt;ネットワークに上で作成したVPCを選択
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52531198-03290200-2d55-11e9-8e4a-5a792dd38ad9.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;サブネットに1aのサブネットを選択
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52531199-03290200-2d55-11e9-8c1b-0b7d6df9553e.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;パブリックIPの割当に「有効」を選択&lt;/p&gt;
+&lt;p&gt;他はそのまま進んで、&lt;/p&gt;
+&lt;p&gt;タグを設定
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52531200-03290200-2d55-11e9-90c8-14099b22f610.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;セキュリティーグループを設定（追加）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52531201-03c19880-2d55-11e9-9b2c-47bf7de052ce.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;そのまま進んで、「起動」ボタンを押下、sshの鍵認証を選択して、インスタンスの作成。&lt;/p&gt;
+&lt;p&gt;作成されたことを確認&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52531398-2d2ff380-2d58-11e9-97dd-f176f6e7c48d.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;IPv4パブリックIPより、sshでログインできることを確認&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ ssh -i ~/.ssh/aws_cypher_works/xxx/aws-toshio.pem ec2-user@xxx.xxx.xxx.xxx
+~~
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-2/
+3 package(s) needed for security, out of 3 available
+Run &amp;quot;sudo yum update&amp;quot; to apply all updates.
+[ec2-user@my-web-1a ~]$&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;外に通信が出られるか確認&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;[ec2-user@my-web-1a ~]$ ping yahoo.co.jp
+~~
+^C
+--- yahoo.co.jp ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;続きます、以上です。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Intervention Image Upsize]]></title><description><![CDATA[Your next, great blog post goes here]]></description><link>https://ta-toshio.github.io/blog//2018-10-07-intervention-image-upsize/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-10-07-intervention-image-upsize/</guid><pubDate>Sun, 07 Oct 2018 06:40:30 GMT</pubDate><content:encoded>&lt;p&gt;Your next, great blog post goes here&lt;/p&gt;</content:encoded></item><item><title><![CDATA[formik-material-uiでのCheckboxの初期値]]></title><description><![CDATA[material-uiとformikを苦労なくつなぎこみたい場合、以下のモジュールがあります。 https://github.com/stackworx/formik-material-ui ただ2018/09の時点ではcheckbox…]]></description><link>https://ta-toshio.github.io/blog//2018-09-28-formik-material-ui-checkbox/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-09-28-formik-material-ui-checkbox/</guid><pubDate>Fri, 28 Sep 2018 07:08:48 GMT</pubDate><content:encoded>&lt;p&gt;material-uiとformikを苦労なくつなぎこみたい場合、以下のモジュールがあります。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/stackworx/formik-material-ui&quot;&gt;https://github.com/stackworx/formik-material-ui&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;ただ2018/09の時点ではcheckboxの振る舞いで初期値にチェックがつけることができなそうです。&lt;/p&gt;
 &lt;p&gt;手元では修正しましたのでここに載せておきます。&lt;/p&gt;
