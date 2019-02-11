@@ -1,7 +1,7 @@
 ---
-path: "/use-aws-elb"
+path: "/use-aws-elb-1"
 date: "2019-02-09T06:02:15.403Z"
-title: "Use Aws Elb"
+title: "Use Aws Elb #2"
 tags: []
 ---
 
@@ -12,14 +12,18 @@ tags: []
 0. AMIの作成
 
 1. ELBの作成 <- ここから
-  * 対象となるサブネット
-  * セキュリティーグループの設定
+    * 対象となるサブネット
+    * セキュリティーグループの設定
 
 2. ターゲットグループの設定
-  * ヘルスチェックの設定
-  * どのインスタンスをELBの配下に設定するか
+    * ヘルスチェックの設定
+    * どのインスタンスをELBの配下に設定するか
+
+3. Auto Scalingの設定
 
 #### 作業
+
+##### ELBの作成、ターゲットグループの設定
 
 Applicatin Load Balancerを選択後、ロードバランサーの設定の入力画面
 ![](https://user-images.githubusercontent.com/37950257/52547984-5ad77400-2e0e-11e9-9fcc-2c9741f6a5ee.png)
