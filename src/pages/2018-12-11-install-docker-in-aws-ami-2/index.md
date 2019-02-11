@@ -1,7 +1,7 @@
 ---
 path: "/install-docker-in-aws-ami-2"
 date: "2018-12-11T04:11:28.258Z"
-title: "Install Docker In Aws Ami 2"
+title: "Install Docker in AWS AMI 2"
 tags: []
 ---
 Amazon Linux 2 AMI (HVM)にDockerのインストール

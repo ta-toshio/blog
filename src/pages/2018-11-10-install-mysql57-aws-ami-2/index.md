@@ -1,7 +1,7 @@
 ---
-path: "/aws-ami-2-install-mysql-57"
+path: "/install-mysql57-in-aws-ami-2"
 date: "2018-11-10T14:22:25.737Z"
-title: "Aws Ami 2 Install Mysql 57"
+title: "Install Mysql57 in AWS AMI 2 "
 tags: ["aws"]
 ---
 
