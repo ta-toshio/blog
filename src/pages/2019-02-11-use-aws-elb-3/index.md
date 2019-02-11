@@ -15,7 +15,7 @@ tags: []
 
 2. ターゲットグループの設定
 
-3. Auto Scalingの設定
+3. Auto Scailingの設定
     * 起動設定
     * Auto Scailingグループ
 
@@ -25,7 +25,7 @@ tags: []
 Auto Scailingグループをターゲットグループに紐付かせることによって、どのロードバランシング対象の管理化でスケールアウト、スケールインしますか、という振る舞いになる。
 
 
-Auto Scaling起動設定の作成
+Auto Scailing起動設定の作成
 
 自分で作成したAMIを選択
 ![](https://user-images.githubusercontent.com/37950257/52552599-35556500-2e24-11e9-9887-4b9b8b232713.png)
@@ -51,7 +51,7 @@ Auto Scailingグループの作成
 * ターゲットグループに、前回作成したターゲットグループを指定して、ロードバランサー管理下のインスタンスと認識させる
 * ヘルスチェックのタイプにELB
 
-Auto Scalingのルールを設定
+Auto Scailingのルールを設定
 今回は最低1個のインスタンスで、最大2個
 ![](https://user-images.githubusercontent.com/37950257/52552607-36869200-2e24-11e9-84a7-798426341e6c.png)
 
