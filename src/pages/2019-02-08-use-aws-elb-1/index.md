@@ -12,7 +12,7 @@ ELBの利用をしてきます。
 
 正常動作しているインスタンスにリクエストを振り分ける
 
-*Auto Scailing*
+*Auto Scaling*
 
 条件を決めてインスタンスの増減させる
 
@@ -29,11 +29,11 @@ ELBの利用をしてきます。
     * ヘルスチェックの設定
     * どのインスタンスをELBの配下に設定するか
 
-3. Auto Scailingの設定
+3. Auto Scalingの設定
 
 #### 作業
 
-対象となるサブネットに、パブリックIPアドレスの自動割当の設定を行う。Auto Scailingで自動で立ち上がったインスタンスにパブリックIPが割り振られるようになる。
+対象となるサブネットに、パブリックIPアドレスの自動割当の設定を行う。Auto Scalingで自動で立ち上がったインスタンスにパブリックIPが割り振られるようになる。
 
 サブネットの一覧画面よりpublic-1aを選択
 ![](https://user-images.githubusercontent.com/37950257/52544101-f6a6b700-2df1-11e9-9807-1f91a25aca47.png)
@@ -51,7 +51,7 @@ public-1cにも同様に設定
 ![](https://user-images.githubusercontent.com/37950257/52544105-f73f4d80-2df1-11e9-8df5-7a0330afab59.png)
 
 
-Auto Scailingする際の元となるイメージ（AMI）を作成する。そのAMIを作成するためのEC2を作成する。
+Auto Scalingする際の元となるイメージ（AMI）を作成する。そのAMIを作成するためのEC2を作成する。
 
 
 入力画面
