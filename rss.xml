@@ -1,4 +1,61 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Mon, 11 Feb 2019 05:58:15 GMT</lastBuildDate><item><title><![CDATA[Use Aws Elb]]></title><description><![CDATA[ELBの利用をしてきます。 ヘルスチェック 正常動作しているインスタンスにリクエストを振り分ける Auto Scaling 条件を決めてインスタンスの増減させる 方針 AMIの作成 ELB…]]></description><link>https://ta-toshio.github.io/blog//2019-02-08-use-aws-elb/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-08-use-aws-elb/</guid><pubDate>Fri, 08 Feb 2019 01:25:54 GMT</pubDate><content:encoded>&lt;p&gt;ELBの利用をしてきます。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Mon, 11 Feb 2019 06:54:33 GMT</lastBuildDate><item><title><![CDATA[Use Aws Elb]]></title><description><![CDATA[前回の続きです。 方針 AMIの作成 ELBの作成 <- ここから 対象となるサブネット セキュリティーグループの設定 ターゲットグループの設定 ヘルスチェックの設定 どのインスタンスをELBの配下に設定するか 作業 Applicatin Load Balancer…]]></description><link>https://ta-toshio.github.io/blog//2019-02-09-use-aws-elb/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-09-use-aws-elb/</guid><pubDate>Sat, 09 Feb 2019 06:02:15 GMT</pubDate><content:encoded>&lt;p&gt;前回の続きです。&lt;/p&gt;
+&lt;h4&gt;方針&lt;/h4&gt;
+&lt;ol start=&quot;0&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;AMIの作成&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ELBの作成 &amp;#x3C;- ここから&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;対象となるサブネット&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;セキュリティーグループの設定&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ターゲットグループの設定&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ヘルスチェックの設定&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;どのインスタンスをELBの配下に設定するか&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;作業&lt;/h4&gt;
+&lt;p&gt;Applicatin Load Balancerを選択後、ロードバランサーの設定の入力画面
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52547984-5ad77400-2e0e-11e9-9fcc-2c9741f6a5ee.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;ヘルスチェック（死活監視）を使用するのに利用するのかな、と推測。&lt;/p&gt;
+&lt;p&gt;ロードバランサーを適用するアベイラビリティゾーン、ひいてはサブネット
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52547986-5ad77400-2e0e-11e9-8b44-b0a2b1916a28.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52547987-5ad77400-2e0e-11e9-8cae-fae7cff0192a.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;セキュリティーブループ
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52547988-5b700a80-2e0e-11e9-852e-f2bf3d68deef.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;httpに変更。あとHTTPSも追加したほうがいいのかもしれない。公開は追加しなかった&lt;/p&gt;
+&lt;p&gt;ターゲットグループの作成
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52547989-5b700a80-2e0e-11e9-8152-751b4a2511d0.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52547991-5b700a80-2e0e-11e9-961c-11a6c0d3c102.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;バランシングするターゲットを登録
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52547992-5c08a100-2e0e-11e9-8757-34963ea3433f.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;今稼働しているインスタンスを選択
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52547993-5ca13780-2e0e-11e9-9bcf-af6cee1cb992.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;「登録済みに追加」ボタンを押下
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52547994-5ca13780-2e0e-11e9-98d6-ee8c6d0ac79c.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;画面上のテーブルにレコードが追加されるので、選択
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52547996-5ca13780-2e0e-11e9-9500-a1e99e7edbcf.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;保存
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52547997-5d39ce00-2e0e-11e9-957e-ddf927172f71.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;ロードバランサー一覧を確認&lt;/p&gt;
+&lt;p&gt;80ポートの通信はターゲットグループのルール（ここではmy-tg）に従うという意と推測
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52548694-7ba1c880-2e12-11e9-9e0a-6d7a7973e055.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;ターゲットグループ確認&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52548865-7133fe80-2e13-11e9-8f98-847660cf7764.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;ターゲットグループに管理されているインスタンスが存在すること確認、さらにhealthyであることも確認
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52548695-7ba1c880-2e12-11e9-9c77-648dc90be30d.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;ロードバランサーのDNS名で動作確認
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52548952-f9b29f00-2e13-11e9-8866-f9166e8a2ccd.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;次回に続きます。Auto Scalingの設定です。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Use Aws Elb]]></title><description><![CDATA[ELBの利用をしてきます。 ヘルスチェック 正常動作しているインスタンスにリクエストを振り分ける Auto Scaling 条件を決めてインスタンスの増減させる 方針 AMIの作成 ELB…]]></description><link>https://ta-toshio.github.io/blog//2019-02-08-use-aws-elb/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-08-use-aws-elb/</guid><pubDate>Fri, 08 Feb 2019 01:25:54 GMT</pubDate><content:encoded>&lt;p&gt;ELBの利用をしてきます。&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;ヘルスチェック&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;正常動作しているインスタンスにリクエストを振り分ける&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Auto Scaling&lt;/em&gt;&lt;/p&gt;
@@ -50,6 +107,9 @@
 &lt;p&gt;作成したので、AMIをとる。インスタンスは停止しておく。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52547598-3da1a600-2e0c-11e9-939d-50517a6bce03.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52547599-3da1a600-2e0c-11e9-956c-0883723c8def.png&quot;&gt;&lt;/p&gt;
+&lt;br /&gt;
+閑話休題。割愛しますが、インスタンスに対して、Apacheを自動起動する設定をしました。
+&lt;br /&gt;
 &lt;p&gt;AMIからインスタンス作成しておく。AMI一覧から該当のAMIを選択して、アクションから起動。作成内容は上のEC2作成したときと同じ。&lt;/p&gt;
 &lt;p&gt;AMIの作成まで完了、次回に続く。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Create Vpc Private Subnet And Ec 2]]></title><description><![CDATA[理解を深めるための備忘録です。
 こちらの講座をもとに作業しました。詳しい解説はそちらを閲覧してください。（有料です） https://www.udemy.com/aws-14days…]]></description><link>https://ta-toshio.github.io/blog//2019-01-09-create-vpc-private-subnet-and-ec-2/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-01-09-create-vpc-private-subnet-and-ec-2/</guid><pubDate>Wed, 09 Jan 2019 08:37:02 GMT</pubDate><content:encoded>&lt;p&gt;理解を深めるための備忘録です。
@@ -269,7 +329,7 @@ Run &amp;quot;sudo yum update&amp;quot; to apply all updates.
 --- yahoo.co.jp ping statistics ---
 2 packets transmitted, 2 received, 0% packet loss, time 1001ms&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
-&lt;p&gt;続きます、以上です。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Install Docker In Aws Ami 2]]></title><description><![CDATA[Amazon Linux 2 AMI (HVM)にDockerのインストール こちらの記事を参考に作業しました。
+&lt;p&gt;続きます、以上です。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Install Docker in AWS AMI 2]]></title><description><![CDATA[Amazon Linux 2 AMI (HVM)にDockerのインストール こちらの記事を参考に作業しました。
  https://qiita.com/reflet/items/3b818fbfb14ba5c7ef47 他参考サイト   
  https://qiita.com/y…]]></description><link>https://ta-toshio.github.io/blog//2018-12-11-install-docker-in-aws-ami-2/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-12-11-install-docker-in-aws-ami-2/</guid><pubDate>Tue, 11 Dec 2018 04:11:28 GMT</pubDate><content:encoded>&lt;p&gt;Amazon Linux 2 AMI (HVM)にDockerのインストール&lt;/p&gt;
 &lt;p&gt;こちらの記事を参考に作業しました。
@@ -344,9 +404,9 @@ $ docker rm `docker ps -f &amp;quot;status=exited&amp;quot; -q`&lt;/code&gt;&lt;
 &lt;p&gt;&lt;em&gt;他参考サイト&lt;/em&gt; &lt;br /&gt;
 &lt;a href=&quot;https://qiita.com/y-do/items/e127211b32296d65803a&quot;&gt;https://qiita.com/y-do/items/e127211b32296d65803a&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;amazon-linux-extrasについて&lt;br /&gt;
-&lt;a href=&quot;https://dev.classmethod.jp/cloud/aws/how-to-work-with-amazon-linux2-amazon-linux-extras/&quot;&gt;https://dev.classmethod.jp/cloud/aws/how-to-work-with-amazon-linux2-amazon-linux-extras/&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Aws Ami 2 Install Mysql 57]]></title><description><![CDATA[Amazon Linux 2 AMI (HVM)にMysql5.7のインストール こちらの記事を参考に作業しました。
+&lt;a href=&quot;https://dev.classmethod.jp/cloud/aws/how-to-work-with-amazon-linux2-amazon-linux-extras/&quot;&gt;https://dev.classmethod.jp/cloud/aws/how-to-work-with-amazon-linux2-amazon-linux-extras/&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Install Mysql57 in AWS AMI 2 ]]></title><description><![CDATA[Amazon Linux 2 AMI (HVM)にMysql5.7のインストール こちらの記事を参考に作業しました。
  https://qiita.com/2no553/items/952dbb8df9a228195189 他参考
- https://qiita.com…]]></description><link>https://ta-toshio.github.io/blog//2018-11-10-aws-ami-2-install-mysql-57/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-11-10-aws-ami-2-install-mysql-57/</guid><pubDate>Sat, 10 Nov 2018 14:22:25 GMT</pubDate><content:encoded>&lt;p&gt;Amazon Linux 2 AMI (HVM)にMysql5.7のインストール&lt;/p&gt;
+ https://qiita.com…]]></description><link>https://ta-toshio.github.io/blog//2018-11-10-install-mysql57-aws-ami-2/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-11-10-install-mysql57-aws-ami-2/</guid><pubDate>Sat, 10 Nov 2018 14:22:25 GMT</pubDate><content:encoded>&lt;p&gt;Amazon Linux 2 AMI (HVM)にMysql5.7のインストール&lt;/p&gt;
 &lt;p&gt;こちらの記事を参考に作業しました。
 &lt;a href=&quot;https://qiita.com/2no553/items/952dbb8df9a228195189&quot;&gt;https://qiita.com/2no553/items/952dbb8df9a228195189&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot;&gt;
