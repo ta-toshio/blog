@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Mon, 11 Feb 2019 11:58:31 GMT</lastBuildDate><item><title><![CDATA[Use Aws Elb #3]]></title><description><![CDATA[前回の続きです。 方針 AMIの作成 ELBの作成 ターゲットグループの設定 Auto Scalingの設定 起動設定 Auto Scailingグループ どのようなルール（＝Auto Scailingグループ）でどのようなインスタンス（=起動設定）を増減するか。 Auto…]]></description><link>https://ta-toshio.github.io/blog//2019-02-11-use-aws-elb-3/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-11-use-aws-elb-3/</guid><pubDate>Mon, 11 Feb 2019 07:03:26 GMT</pubDate><content:encoded>&lt;p&gt;前回の続きです。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Mon, 11 Feb 2019 23:38:33 GMT</lastBuildDate><item><title><![CDATA[Use Aws Elb #3]]></title><description><![CDATA[前回の続きです。 方針 AMIの作成 ELBの作成 ターゲットグループの設定 Auto Scailingの設定 起動設定 Auto Scailingグループ どのようなルール（＝Auto Scailingグループ）でどのようなインスタンス（=起動設定）を増減するか。 Auto…]]></description><link>https://ta-toshio.github.io/blog//2019-02-11-use-aws-elb-3/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-11-use-aws-elb-3/</guid><pubDate>Mon, 11 Feb 2019 07:03:26 GMT</pubDate><content:encoded>&lt;p&gt;前回の続きです。&lt;/p&gt;
 &lt;h4&gt;方針&lt;/h4&gt;
 &lt;ol start=&quot;0&quot;&gt;
 &lt;li&gt;
@@ -11,7 +11,7 @@
 &lt;p&gt;ターゲットグループの設定&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Auto Scalingの設定&lt;/p&gt;
+&lt;p&gt;Auto Scailingの設定&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;起動設定&lt;/li&gt;
 &lt;li&gt;Auto Scailingグループ&lt;/li&gt;
@@ -20,7 +20,7 @@
 &lt;/ol&gt;
 &lt;p&gt;どのようなルール（＝Auto Scailingグループ）でどのようなインスタンス（=起動設定）を増減するか。&lt;/p&gt;
 &lt;p&gt;Auto Scailingグループをターゲットグループに紐付かせることによって、どのロードバランシング対象の管理化でスケールアウト、スケールインしますか、という振る舞いになる。&lt;/p&gt;
-&lt;p&gt;Auto Scaling起動設定の作成&lt;/p&gt;
+&lt;p&gt;Auto Scailing起動設定の作成&lt;/p&gt;
 &lt;p&gt;自分で作成したAMIを選択
 &lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52552599-35556500-2e24-11e9-9887-4b9b8b232713.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;名前だけ入力して次へ
@@ -39,7 +39,7 @@
 &lt;li&gt;ターゲットグループに、前回作成したターゲットグループを指定して、ロードバランサー管理下のインスタンスと認識させる&lt;/li&gt;
 &lt;li&gt;ヘルスチェックのタイプにELB&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Auto Scalingのルールを設定
+&lt;p&gt;Auto Scailingのルールを設定
 今回は最低1個のインスタンスで、最大2個
 &lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52552607-36869200-2e24-11e9-84a7-798426341e6c.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;スケールアウトの設定&lt;/p&gt;
@@ -82,7 +82,7 @@
 &lt;p&gt;申し訳ないのですが、Apacheが動いていてブラウザから確認できる箇所は記事中では省いてしまったので、本当にロードバランシングされているか分かりにくい記事になってしまったと思います。&lt;/p&gt;
 &lt;p&gt;あと、インスタンスを全部削除したときの振る舞いも確認したら、Auto Scailingがインスタンス起動させたことも確認しました。
 インスタンスは全てストップさせたかったので、Auto Scailingの動作を無効にする、ということをしたかったのですが、操作方法が分からなかったので、作成した起動設定とAuto Scailingグループのルールは削除しました。&lt;/p&gt;
-&lt;p&gt;以上になります。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Use Aws Elb #2]]></title><description><![CDATA[前回の続きです。 方針 AMIの作成 ELBの作成 <- ここから 対象となるサブネット セキュリティーグループの設定 ターゲットグループの設定 ヘルスチェックの設定 どのインスタンスをELBの配下に設定するか Auto Scalingの設定 作業 ELB…]]></description><link>https://ta-toshio.github.io/blog//2019-02-09-use-aws-elb-2/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-09-use-aws-elb-2/</guid><pubDate>Sat, 09 Feb 2019 06:02:15 GMT</pubDate><content:encoded>&lt;p&gt;前回の続きです。&lt;/p&gt;
+&lt;p&gt;以上になります。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Use Aws Elb #2]]></title><description><![CDATA[前回の続きです。 方針 AMIの作成 ELBの作成 <- ここから 対象となるサブネット セキュリティーグループの設定 ターゲットグループの設定 ヘルスチェックの設定 どのインスタンスをELBの配下に設定するか Auto Scailingの設定 作業 ELB…]]></description><link>https://ta-toshio.github.io/blog//2019-02-09-use-aws-elb-2/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-09-use-aws-elb-2/</guid><pubDate>Sat, 09 Feb 2019 06:02:15 GMT</pubDate><content:encoded>&lt;p&gt;前回の続きです。&lt;/p&gt;
 &lt;h4&gt;方針&lt;/h4&gt;
 &lt;ol start=&quot;0&quot;&gt;
 &lt;li&gt;
@@ -103,7 +103,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Auto Scalingの設定&lt;/p&gt;
+&lt;p&gt;Auto Scailingの設定&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h4&gt;作業&lt;/h4&gt;
@@ -139,10 +139,10 @@
 &lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52548695-7ba1c880-2e12-11e9-9c77-648dc90be30d.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;ロードバランサーのDNS名で動作確認
 &lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52548952-f9b29f00-2e13-11e9-8866-f9166e8a2ccd.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;次回に続きます。Auto Scalingの設定です。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Use Aws Elb #1]]></title><description><![CDATA[ELBの利用をしてきます。 ヘルスチェック 正常動作しているインスタンスにリクエストを振り分ける Auto Scaling 条件を決めてインスタンスの増減させる 方針 AMIの作成 ELB…]]></description><link>https://ta-toshio.github.io/blog//2019-02-08-use-aws-elb-1/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-08-use-aws-elb-1/</guid><pubDate>Fri, 08 Feb 2019 01:25:54 GMT</pubDate><content:encoded>&lt;p&gt;ELBの利用をしてきます。&lt;/p&gt;
+&lt;p&gt;次回に続きます。Auto Scailingの設定です。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Use Aws Elb #1]]></title><description><![CDATA[ELBの利用をしてきます。 ヘルスチェック 正常動作しているインスタンスにリクエストを振り分ける Auto Scailing 条件を決めてインスタンスの増減させる 方針 AMIの作成 ELB…]]></description><link>https://ta-toshio.github.io/blog//2019-02-08-use-aws-elb-1/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-08-use-aws-elb-1/</guid><pubDate>Fri, 08 Feb 2019 01:25:54 GMT</pubDate><content:encoded>&lt;p&gt;ELBの利用をしてきます。&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;ヘルスチェック&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;正常動作しているインスタンスにリクエストを振り分ける&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Auto Scaling&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Auto Scailing&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;条件を決めてインスタンスの増減させる&lt;/p&gt;
 &lt;h4&gt;方針&lt;/h4&gt;
 &lt;ol start=&quot;0&quot;&gt;
@@ -164,11 +164,11 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Auto Scalingの設定&lt;/p&gt;
+&lt;p&gt;Auto Scailingの設定&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h4&gt;作業&lt;/h4&gt;
-&lt;p&gt;対象となるサブネットに、パブリックIPアドレスの自動割当の設定を行う。Auto Scalingで自動で立ち上がったインスタンスにパブリックIPが割り振られるようになる。&lt;/p&gt;
+&lt;p&gt;対象となるサブネットに、パブリックIPアドレスの自動割当の設定を行う。Auto Scailingで自動で立ち上がったインスタンスにパブリックIPが割り振られるようになる。&lt;/p&gt;
 &lt;p&gt;サブネットの一覧画面よりpublic-1aを選択
 &lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52544101-f6a6b700-2df1-11e9-9807-1f91a25aca47.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;アクションより「自動割り当てIP設定の変更」を押下
@@ -179,7 +179,7 @@
 &lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52544104-f73f4d80-2df1-11e9-9082-04a3ae6f052d.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;public-1cにも同様に設定
 &lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52544105-f73f4d80-2df1-11e9-8df5-7a0330afab59.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Auto Scalingする際の元となるイメージ（AMI）を作成する。そのAMIを作成するためのEC2を作成する。&lt;/p&gt;
+&lt;p&gt;Auto Scailingする際の元となるイメージ（AMI）を作成する。そのAMIを作成するためのEC2を作成する。&lt;/p&gt;
 &lt;p&gt;入力画面
 &lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52545734-38892a80-2dfd-11e9-8c4d-1817e61bc1f2.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;上でパブリックサブネットにはIPv4の自動割り当てをしたので、「サブネット設定を使用(有効)」を選択すれば自動でIPが割り振られる。&lt;/p&gt;
