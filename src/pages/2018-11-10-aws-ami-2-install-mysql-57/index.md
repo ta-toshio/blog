@@ -1,8 +1,8 @@
 ---
 path: "/aws-ami-2-install-mysql-57"
-date: "2019-02-10T14:22:25.737Z"
+date: "2018-11-10T14:22:25.737Z"
 title: "Aws Ami 2 Install Mysql 57"
-tags: []
+tags: ["aws"]
 ---
 
 Amazon Linux 2 AMI (HVM)にMysql5.7のインストール

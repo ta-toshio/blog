@@ -1,6 +1,6 @@
 ---
 path: "/create-vpc-public-subnet-and-ec-2"
-date: "2019-02-08T08:36:55.056Z"
+date: "2019-01-08T08:36:55.056Z"
 title: "Create Vpc Public Subnet And Ec 2"
 tags: []
 ---
@@ -48,8 +48,6 @@ Internet Gatewayというサービスを利用して、VPCの外から入って�
 1. VPCを作成する
 2. アベイラビリティゾーン1aにパブリックサブネットを作成する
 3. Internet GWも作成する
-
-別のアベイラビリティゾーン（1c）にも場ブリックサブネットを作成する
 4. アベイラビリティゾーン1cにパブリックサブネットを作成する
 5. 新規で作った場合はInternet GWに向いていないので、ルートテーブルを修正する
 
@@ -87,7 +85,7 @@ Destination: 10.0.0.0/16, Target: Local
 <br />
 Destination: 0.0.0.0/0, Target: igw-xxx
 <br />
-VPC中の接続は、そのままLocalの接続。その他はインターネットゲートウェイに出ていくように、という内容
+VPCの中の接続は、そのままLocalの接続。その他はインターネットゲートウェイに出ていくように、という内容
 
 アベイラビリティゾーン1cにもパブリックサブネットを作成する
 
