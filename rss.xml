@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Mon, 11 Feb 2019 23:41:09 GMT</lastBuildDate><item><title><![CDATA[Use Aws Elb #3]]></title><description><![CDATA[前回の続きです。 方針 AMIの作成 ELBの作成 ターゲットグループの設定 Auto Scalingの設定 起動設定 Auto Scalingグループ どのようなルール（＝Auto Scalingグループ）でどのようなインスタンス（=起動設定）を増減するか。 Auto…]]></description><link>https://ta-toshio.github.io/blog//2019-02-11-use-aws-elb-3/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-11-use-aws-elb-3/</guid><pubDate>Mon, 11 Feb 2019 07:03:26 GMT</pubDate><content:encoded>&lt;p&gt;前回の続きです。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Thu, 14 Feb 2019 04:40:52 GMT</lastBuildDate><item><title><![CDATA[Use Aws Elb #3]]></title><description><![CDATA[前回の続きです。 方針 AMIの作成 ELBの作成 ターゲットグループの設定 Auto Scalingの設定 起動設定 Auto Scalingグループ どのようなルール（＝Auto Scalingグループ）でどのようなインスタンス（=起動設定）を増減するか。 Auto…]]></description><link>https://ta-toshio.github.io/blog//2019-02-11-use-aws-elb-3/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-11-use-aws-elb-3/</guid><pubDate>Mon, 11 Feb 2019 07:03:26 GMT</pubDate><content:encoded>&lt;p&gt;前回の続きです。&lt;/p&gt;
 &lt;h4&gt;方針&lt;/h4&gt;
 &lt;ol start=&quot;0&quot;&gt;
 &lt;li&gt;
@@ -334,14 +334,15 @@
 &lt;p&gt;入力内容
 &lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52530668-1aafbd00-2d4c-11e9-9817-7caf98d76677.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;作成されたVPC確認
-&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52530670-1b485380-2d4c-11e9-895a-331b79c89b48.png&quot;&gt;&lt;/p&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52530669-1b485380-2d4c-11e9-8e0b-62a0b8282685.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;作成されたサブネット確認
-&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52530671-1b485380-2d4c-11e9-8259-a0962bcef880.png&quot;&gt;&lt;/p&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52530670-1b485380-2d4c-11e9-895a-331b79c89b48.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;作成されたインターネットゲートウェイ確認
 あと名前をつけた
-&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52530672-1be0ea00-2d4c-11e9-9b08-f558d7f3d4f2.png&quot;&gt;&lt;/p&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52530671-1b485380-2d4c-11e9-8259-a0962bcef880.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;作成されたルートテーブル確認
-あとな名前をつけた
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52530672-1be0ea00-2d4c-11e9-9b08-f558d7f3d4f2.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;あとな名前をつけた
 &lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52530673-1be0ea00-2d4c-11e9-8ecf-36df1fb6f764.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;ルートテーブル設定内容の確認
 &lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52530674-1be0ea00-2d4c-11e9-88ba-16885ea4351e.png&quot;&gt;&lt;/p&gt;
