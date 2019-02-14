@@ -63,20 +63,24 @@ Internet Gatewayというサービスを利用して、VPCの外から入って�
 
 
 作成されたVPC確認
-![](https://user-images.githubusercontent.com/37950257/52530670-1b485380-2d4c-11e9-895a-331b79c89b48.png)
-
+![](https://user-images.githubusercontent.com/37950257/52530669-1b485380-2d4c-11e9-8e0b-62a0b8282685.png)
 
 作成されたサブネット確認
-![](https://user-images.githubusercontent.com/37950257/52530671-1b485380-2d4c-11e9-8259-a0962bcef880.png)
+![](https://user-images.githubusercontent.com/37950257/52530670-1b485380-2d4c-11e9-895a-331b79c89b48.png)
 
 
 作成されたインターネットゲートウェイ確認
 あと名前をつけた
-![](https://user-images.githubusercontent.com/37950257/52530672-1be0ea00-2d4c-11e9-9b08-f558d7f3d4f2.png)
+![](https://user-images.githubusercontent.com/37950257/52530671-1b485380-2d4c-11e9-8259-a0962bcef880.png)
+
 
 作成されたルートテーブル確認
+![](https://user-images.githubusercontent.com/37950257/52530672-1be0ea00-2d4c-11e9-9b08-f558d7f3d4f2.png)
+
+
 あとな名前をつけた
 ![](https://user-images.githubusercontent.com/37950257/52530673-1be0ea00-2d4c-11e9-8ecf-36df1fb6f764.png)
+
 
 ルートテーブル設定内容の確認
 ![](https://user-images.githubusercontent.com/37950257/52530674-1be0ea00-2d4c-11e9-88ba-16885ea4351e.png)
