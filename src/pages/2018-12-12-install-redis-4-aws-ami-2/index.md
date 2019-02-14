@@ -39,7 +39,7 @@ Redirecting to /bin/systemctl status redis.service
    Active: active (running) ...
 
 # 別サーバーから接続するための設定
-$ cp /etc/redis.conf /etc/redis.conf.default
+$ sudo cp /etc/redis.conf /etc/redis.conf.default
 $ sudo vi /etc/redis.conf
 - bind 127.0.0.1
 + bind 0.0.0.0
@@ -62,7 +62,7 @@ $ sudo wget http://download.redis.io/redis-stable.tar.gz
 $ sudo tar xvzf redis-stable.tar.gz
 $ cd redis-stable
 $ sudo make
-$ src/redis-cli -h mycachecluster.eaogs8.0001.usw2.cache.amazonaws.com -p 6379
+$ src/redis-cli -h yourip -p 6379
 ```
 
 ---
