@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Thu, 14 Feb 2019 05:00:37 GMT</lastBuildDate><item><title><![CDATA[Use Aws Elb #3]]></title><description><![CDATA[前回の続きです。 方針 AMIの作成 ELBの作成 ターゲットグループの設定 Auto Scalingの設定 起動設定 Auto Scalingグループ どのようなルール（＝Auto Scalingグループ）でどのようなインスタンス（=起動設定）を増減するか。 Auto…]]></description><link>https://ta-toshio.github.io/blog//2019-02-11-use-aws-elb-3/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-11-use-aws-elb-3/</guid><pubDate>Mon, 11 Feb 2019 07:03:26 GMT</pubDate><content:encoded>&lt;p&gt;前回の続きです。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Thu, 14 Feb 2019 05:08:55 GMT</lastBuildDate><item><title><![CDATA[Use Aws Elb #3]]></title><description><![CDATA[前回の続きです。 方針 AMIの作成 ELBの作成 ターゲットグループの設定 Auto Scalingの設定 起動設定 Auto Scalingグループ どのようなルール（＝Auto Scalingグループ）でどのようなインスタンス（=起動設定）を増減するか。 Auto…]]></description><link>https://ta-toshio.github.io/blog//2019-02-11-use-aws-elb-3/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-11-use-aws-elb-3/</guid><pubDate>Mon, 11 Feb 2019 07:03:26 GMT</pubDate><content:encoded>&lt;p&gt;前回の続きです。&lt;/p&gt;
 &lt;h4&gt;方針&lt;/h4&gt;
 &lt;ol start=&quot;0&quot;&gt;
 &lt;li&gt;
@@ -364,7 +364,7 @@ VPCの中の接続は、そのままLocalの接続。その他はインターネ
 &lt;p&gt;選択後、igw-xxxの行が追加された
 &lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52530854-5e57f600-2d4f-11e9-9904-af469c8d540a.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;編集されたルートテーブルの設定を確認。インターネットゲートウェイの項目が追加されていること確認。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://user-images.githubusercontent.com/37950257/52531195-02906b80-2d55-11e9-9005-ad982e44f84a.png&quot;&gt;https://user-images.githubusercontent.com/37950257/52531195-02906b80-2d55-11e9-9005-ad982e44f84a.png&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52531195-02906b80-2d55-11e9-9005-ad982e44f84a.png&quot;&gt;&lt;/p&gt;
 &lt;h3&gt;パブリックサブネットの1aにEC2をつくる&lt;/h3&gt;
 &lt;p&gt;方針&lt;/p&gt;
 &lt;ol&gt;
@@ -391,7 +391,7 @@ VPCの中の接続は、そのままLocalの接続。その他はインターネ
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52531398-2d2ff380-2d58-11e9-97dd-f176f6e7c48d.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;IPv4パブリックIPより、sshでログインできることを確認&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot;&gt;
-      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ ssh -i ~/.ssh/aws_cypher_works/xxx/aws-toshio.pem ec2-user@xxx.xxx.xxx.xxx
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ ssh -i ~/.ssh/path/to/aws.pem ec2-user@xxx.xxx.xxx.xxx
 ~~
        __|  __|_  )
        _|  (     /   Amazon Linux 2 AMI
