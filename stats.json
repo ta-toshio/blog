@@ -57,16 +57,16 @@
       "component---src-layouts-index-js-8af51a7b81393e72e79d.js.map"
     ],
     "path---index": [
-      "path---index-e007966847c03b3cc39d.js",
-      "path---index-e007966847c03b3cc39d.js.map"
+      "path---index-d0e47df4b9b8a56a1e25.js",
+      "path---index-d0e47df4b9b8a56a1e25.js.map"
     ],
     "path---2018-09-06-remote-debugger-with-phpstorm-and-vagrant": [
       "path---2018-09-06-remote-debugger-with-phpstorm-and-vagrant-6855f8ecd23245be52ea.js",
       "path---2018-09-06-remote-debugger-with-phpstorm-and-vagrant-6855f8ecd23245be52ea.js.map"
     ],
     "path---2018-12-11-install-docker-in-aws-ami-2": [
-      "path---2018-12-11-install-docker-in-aws-ami-2-7ddc67ceca4d67622830.js",
-      "path---2018-12-11-install-docker-in-aws-ami-2-7ddc67ceca4d67622830.js.map"
+      "path---2018-12-11-install-docker-in-aws-ami-2-d44b637e6b994d181ef0.js",
+      "path---2018-12-11-install-docker-in-aws-ami-2-d44b637e6b994d181ef0.js.map"
     ],
     "path---2018-11-10-install-mysql-57-aws-ami-2": [
       "path---2018-11-10-install-mysql-57-aws-ami-2-4783fddb9d7a2aaa0772.js",
@@ -79,6 +79,10 @@
     "path---2019-02-08-use-aws-elb-1": [
       "path---2019-02-08-use-aws-elb-1-298674ba9a1b00e54396.js",
       "path---2019-02-08-use-aws-elb-1-298674ba9a1b00e54396.js.map"
+    ],
+    "path---2018-12-12-install-redis-4-aws-ami-2": [
+      "path---2018-12-12-install-redis-4-aws-ami-2-5abd4868de1c6a45bf96.js",
+      "path---2018-12-12-install-redis-4-aws-ami-2-5abd4868de1c6a45bf96.js.map"
     ],
     "commons": [
       "commons-052854b14b2d9cebb713.js",
@@ -95,9 +99,9 @@
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js.map"
     ],
     "app": [
-      "app-3b3a1c783d2b7c6b21df.js",
+      "app-3bc9112986f43233a4b6.js",
       "build-js-styles.css",
-      "app-3b3a1c783d2b7c6b21df.js.map",
+      "app-3bc9112986f43233a4b6.js.map",
       "build-js-styles.css.map"
     ],
     "path---2019-02-11-use-aws-elb-3": [
@@ -105,8 +109,8 @@
       "path---2019-02-11-use-aws-elb-3-84ac354d2ca2cabc45e6.js.map"
     ],
     "path---2019-01-09-create-vpc-private-subnet-and-ec-2": [
-      "path---2019-01-09-create-vpc-private-subnet-and-ec-2-98563496f238fae2447a.js",
-      "path---2019-01-09-create-vpc-private-subnet-and-ec-2-98563496f238fae2447a.js.map"
+      "path---2019-01-09-create-vpc-private-subnet-and-ec-2-22dd4283b0e2518ffe61.js",
+      "path---2019-01-09-create-vpc-private-subnet-and-ec-2-22dd4283b0e2518ffe61.js.map"
     ],
     "path---2018-04-03-display-table-case-study": [
       "path---2018-04-03-display-table-case-study-b43e6c2f4b17a3f85f44.js",
@@ -121,8 +125,8 @@
       "path---2018-09-04-docorator-pattern-code-f8a16872cdae2006fdb6.js.map"
     ],
     "path---2019-01-08-create-vpc-public-subnet-and-ec-2": [
-      "path---2019-01-08-create-vpc-public-subnet-and-ec-2-95d8a84e550ef53df06f.js",
-      "path---2019-01-08-create-vpc-public-subnet-and-ec-2-95d8a84e550ef53df06f.js.map"
+      "path---2019-01-08-create-vpc-public-subnet-and-ec-2-4a9240166991a81d8792.js",
+      "path---2019-01-08-create-vpc-public-subnet-and-ec-2-4a9240166991a81d8792.js.map"
     ]
   }
 }

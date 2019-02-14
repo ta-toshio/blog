@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Thu, 14 Feb 2019 05:08:55 GMT</lastBuildDate><item><title><![CDATA[Use Aws Elb #3]]></title><description><![CDATA[前回の続きです。 方針 AMIの作成 ELBの作成 ターゲットグループの設定 Auto Scalingの設定 起動設定 Auto Scalingグループ どのようなルール（＝Auto Scalingグループ）でどのようなインスタンス（=起動設定）を増減するか。 Auto…]]></description><link>https://ta-toshio.github.io/blog//2019-02-11-use-aws-elb-3/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-11-use-aws-elb-3/</guid><pubDate>Mon, 11 Feb 2019 07:03:26 GMT</pubDate><content:encoded>&lt;p&gt;前回の続きです。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Thu, 14 Feb 2019 06:36:29 GMT</lastBuildDate><item><title><![CDATA[Use Aws Elb #3]]></title><description><![CDATA[前回の続きです。 方針 AMIの作成 ELBの作成 ターゲットグループの設定 Auto Scalingの設定 起動設定 Auto Scalingグループ どのようなルール（＝Auto Scalingグループ）でどのようなインスタンス（=起動設定）を増減するか。 Auto…]]></description><link>https://ta-toshio.github.io/blog//2019-02-11-use-aws-elb-3/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-11-use-aws-elb-3/</guid><pubDate>Mon, 11 Feb 2019 07:03:26 GMT</pubDate><content:encoded>&lt;p&gt;前回の続きです。&lt;/p&gt;
 &lt;h4&gt;方針&lt;/h4&gt;
 &lt;ol start=&quot;0&quot;&gt;
 &lt;li&gt;
@@ -230,14 +230,13 @@
 &lt;p&gt;プライベート用ルーティング
 &lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52531943-7421e700-2d60-11e9-8d32-df83b1f78350.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;プライベートサブネットに今作ったルートテーブルを適用させる&lt;/p&gt;
-&lt;p&gt;サブネット画面のmy-private-subnet-1aを選択して、「ルートテーブルの関連付けの編集」を押下、&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;ルートテーブルIDに、上で作成したプライベート用ルートテーブルを選択、保存&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52532019-ab44c800-2d61-11e9-885d-7d4d33afcb04.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;設定されたことを確認&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52532021-abdd5e80-2d61-11e9-93ee-1063d8064a89.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;サブネット画面のmy-private-subnet-1aを選択して、「ルートテーブルの関連付けの編集」を押下、
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52532019-ab44c800-2d61-11e9-885d-7d4d33afcb04.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;ルートテーブルIDに、上で作成したプライベート用ルートテーブルを選択、保存
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52532021-abdd5e80-2d61-11e9-93ee-1063d8064a89.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;設定されたことを確認
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52532022-abdd5e80-2d61-11e9-8234-fcbfb101dde2.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;my-private-subnet-1cも同様にプライベート用ルートテーブルを設定させる。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52532022-abdd5e80-2d61-11e9-8234-fcbfb101dde2.png&quot;&gt;&lt;/p&gt;
 &lt;h5&gt;プライベートサブネット内にEC2をつくる&lt;/h5&gt;
 &lt;p&gt;Amazon Linux 2 AMI (HVM), SSD Volume Type を選択&lt;/p&gt;
 &lt;p&gt;お好きなインスタンスタイプを選択&lt;/p&gt;
@@ -410,7 +409,62 @@ Run &amp;quot;sudo yum update&amp;quot; to apply all updates.
 --- yahoo.co.jp ping statistics ---
 2 packets transmitted, 2 received, 0% packet loss, time 1001ms&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
-&lt;p&gt;続きます、以上です。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Install Docker in AWS AMI 2]]></title><description><![CDATA[Amazon Linux 2 AMI (HVM)にDockerのインストール こちらの記事を参考に作業しました。
+&lt;p&gt;続きます、以上です。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Install Redis AWS AMI 2]]></title><description><![CDATA[Amazon Linux 2 AMI (HVM)にRedisをインストール 別サーバーからredis-cliを使って疎通確認をしました。 ec2にredis-cliのインストールはこちらを参考にさせていただきました。
+ https://gist.github.com…]]></description><link>https://ta-toshio.github.io/blog//2018-12-12-install-redis-4-aws-ami-2/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-12-12-install-redis-4-aws-ami-2/</guid><pubDate>Wed, 12 Dec 2018 06:19:46 GMT</pubDate><content:encoded>&lt;p&gt;Amazon Linux 2 AMI (HVM)にRedisをインストール&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;#redisがインストールできるか確認
+$ yum info redis
+読み込んだプラグイン:extras_suggestions, langpacks, priorities, update-motd
+エラー: 表示するパッケージはありません
+
+# インストールできるパッケージを確認
+$ amazon-linux-extras list
+  8  redis4.0                 available    [ =4.0.5  =4.0.10 ]
+
+# インストール（ここでは=4.0.10を指定）
+$ sudo amazon-linux-extras install -y  redis4.0=4.0.10
+
+# 起動
+$ sudo service redis start
+
+# 自動起動
+$ sudo systemctl enable redis
+Created symlink from /etc/systemd/system/multi-user.target.wants/redis.service to /usr/lib/systemd/system/redis.service.
+
+# 確認
+$ sudo service redis status
+Redirecting to /bin/systemctl status redis.service
+● redis.service - Redis persistent key-value database
+   Loaded: loaded (/usr/lib/systemd/system/redis.service; enabled; vendor preset: disabled)
+  Drop-In: /etc/systemd/system/redis.service.d
+           └─limit.conf
+   Active: active (running) ...
+
+# 別サーバーから接続するための設定
+$ cp /etc/redis.conf /etc/redis.conf.default
+$ sudo vi /etc/redis.conf
+- bind 127.0.0.1
++ bind 0.0.0.0
+
+# 再起動
+$ sudo service redis restart&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;別サーバーからredis-cliを使って疎通確認をしました。&lt;/p&gt;
+&lt;p&gt;ec2にredis-cliのインストールはこちらを参考にさせていただきました。
+&lt;a href=&quot;https://gist.github.com/Integralist/72161a96641fa4a0033d&quot;&gt;https://gist.github.com/Integralist/72161a96641fa4a0033d&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ sudo yum install gcc
+$ sudo yum install wget
+$ cd /usr/local/src
+$ sudo wget http://download.redis.io/redis-stable.tar.gz
+$ sudo tar xvzf redis-stable.tar.gz
+$ cd redis-stable
+$ sudo make
+$ src/redis-cli -h mycachecluster.eaogs8.0001.usw2.cache.amazonaws.com -p 6379&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;hr&gt;
+&lt;p&gt;参考サイト&lt;br /&gt;
+&lt;a href=&quot;https://konboi.hatenablog.com/entry/2013/03/05/155107&quot;&gt;https://konboi.hatenablog.com/entry/2013/03/05/155107&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Install Docker in AWS AMI 2]]></title><description><![CDATA[Amazon Linux 2 AMI (HVM)にDockerのインストール こちらの記事を参考に作業しました。
  https://qiita.com/reflet/items/3b818fbfb14ba5c7ef47 他参考サイト   
  https://qiita.com/y…]]></description><link>https://ta-toshio.github.io/blog//2018-12-11-install-docker-in-aws-ami-2/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2018-12-11-install-docker-in-aws-ami-2/</guid><pubDate>Tue, 11 Dec 2018 04:11:28 GMT</pubDate><content:encoded>&lt;p&gt;Amazon Linux 2 AMI (HVM)にDockerのインストール&lt;/p&gt;
 &lt;p&gt;こちらの記事を参考に作業しました。
