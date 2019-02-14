@@ -113,7 +113,7 @@ VPCの中の接続は、そのままLocalの接続。その他はインターネ
 
 編集されたルートテーブルの設定を確認。インターネットゲートウェイの項目が追加されていること確認。
 
-https://user-images.githubusercontent.com/37950257/52531195-02906b80-2d55-11e9-9005-ad982e44f84a.png
+![](https://user-images.githubusercontent.com/37950257/52531195-02906b80-2d55-11e9-9005-ad982e44f84a.png)
 
 
 ### パブリックサブネットの1aにEC2をつくる
@@ -159,7 +159,7 @@ Amazon Linux 2 AMI (HVM), SSD Volume Typeを選択
 IPv4パブリックIPより、sshでログインできることを確認
 
 ```
-$ ssh -i ~/.ssh/aws_cypher_works/xxx/aws-toshio.pem ec2-user@xxx.xxx.xxx.xxx
+$ ssh -i ~/.ssh/path/to/hoge.pem ec2-user@xxx.xxx.xxx.xxx
 ~~
        __|  __|_  )
        _|  (     /   Amazon Linux 2 AMI
