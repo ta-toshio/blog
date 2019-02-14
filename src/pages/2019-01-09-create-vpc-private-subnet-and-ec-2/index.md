@@ -57,20 +57,17 @@ VPCは前回作成したものを選択して、アベイラビリティゾー�
 プライベートサブネットに今作ったルートテーブルを適用させる
 
 サブネット画面のmy-private-subnet-1aを選択して、「ルートテーブルの関連付けの編集」を押下、
-
-![]()
-
-ルートテーブルIDに、上で作成したプライベート用ルートテーブルを選択、保存
-
 ![](https://user-images.githubusercontent.com/37950257/52532019-ab44c800-2d61-11e9-885d-7d4d33afcb04.png)
 
-設定されたことを確認
 
+ルートテーブルIDに、上で作成したプライベート用ルートテーブルを選択、保存
 ![](https://user-images.githubusercontent.com/37950257/52532021-abdd5e80-2d61-11e9-93ee-1063d8064a89.png)
 
-my-private-subnet-1cも同様にプライベート用ルートテーブルを設定させる。
 
+設定されたことを確認
 ![](https://user-images.githubusercontent.com/37950257/52532022-abdd5e80-2d61-11e9-8234-fcbfb101dde2.png)
+
+my-private-subnet-1cも同様にプライベート用ルートテーブルを設定させる。
 
 ##### プライベートサブネット内にEC2をつくる
 
