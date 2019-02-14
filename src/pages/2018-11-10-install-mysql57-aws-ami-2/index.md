@@ -118,6 +118,9 @@ mysql> CREATE DATABASE データベース名 CHARACTER SET utf8mb4;
 # 作業ユーザーに権限を付与（一緒にユーザーも作成される）
 mysql> GRANT ALL PRIVILEGES ON データベース名.* TO ユーザー名@'IP or DNS名 or %' identified by 'パスワード' with grant option;
 
+#* ユーザーのパスワードをもっと簡易なものにしたい場合は
+mysql> SET GLOBAL validate_password_length=8;
+mysql> SET GLOBAL validate_password_policy=LOW;
 
 mysql> exit
 
