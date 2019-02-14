@@ -159,7 +159,7 @@ Amazon Linux 2 AMI (HVM), SSD Volume Typeを選択
 IPv4パブリックIPより、sshでログインできることを確認
 
 ```
-$ ssh -i ~/.ssh/path/to/hoge.pem ec2-user@xxx.xxx.xxx.xxx
+$ ssh -i ~/.ssh/path/to/aws.pem ec2-user@xxx.xxx.xxx.xxx
 ~~
        __|  __|_  )
        _|  (     /   Amazon Linux 2 AMI
