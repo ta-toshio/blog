@@ -179,6 +179,6 @@ NATゲートウェイの振り分けレコードを削除して保存
 
 ![](https://user-images.githubusercontent.com/37950257/52534696-10131900-2d88-11e9-9d54-dab9cac48498.png)
 
-NATゲートウェイ作成時に、Elastic IPも作成したが、NATゲートウェイの削除が完了した後Elastic IPも削除されたこと確認した。
+NATゲートウェイ作成時に、Elastic IPも作成しましたので削除しました。
 
 以上になります。

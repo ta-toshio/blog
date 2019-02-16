@@ -28,7 +28,7 @@ tags: []
 Applicatin Load Balancerを選択後、ロードバランサーの設定の入力画面
 ![](https://user-images.githubusercontent.com/37950257/52547984-5ad77400-2e0e-11e9-9fcc-2c9741f6a5ee.png)
 
-ヘルスチェック（死活監視）を使用するのに利用するのかな、と推測。
+リスナーはヘルスチェック（死活監視）を使用するのに利用するのかな、と推測。
 
 
 ロードバランサーを適用するアベイラビリティゾーン、ひいてはサブネット
@@ -39,7 +39,7 @@ Applicatin Load Balancerを選択後、ロードバランサーの設定の入�
 セキュリティーブループ
 ![](https://user-images.githubusercontent.com/37950257/52547988-5b700a80-2e0e-11e9-852e-f2bf3d68deef.png)
 
-httpに変更。あとHTTPSも追加したほうがいいのかもしれない。公開は追加しなかった
+httpに変更。あとHTTPSも追加したほうがいいのかもしれない。今回は追加しなかった
 
 ターゲットグループの作成
 ![](https://user-images.githubusercontent.com/37950257/52547989-5b700a80-2e0e-11e9-8152-751b4a2511d0.png)
