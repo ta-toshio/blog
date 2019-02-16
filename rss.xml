@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Thu, 14 Feb 2019 07:36:26 GMT</lastBuildDate><item><title><![CDATA[Use Aws Elb #3]]></title><description><![CDATA[前回の続きです。 方針 AMIの作成 ELBの作成 ターゲットグループの設定 Auto Scalingの設定 起動設定 Auto Scalingグループ どのようなルール（＝Auto Scalingグループ）でどのようなインスタンス（=起動設定）を増減するか。 Auto…]]></description><link>https://ta-toshio.github.io/blog//2019-02-11-use-aws-elb-3/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-11-use-aws-elb-3/</guid><pubDate>Mon, 11 Feb 2019 07:03:26 GMT</pubDate><content:encoded>&lt;p&gt;前回の続きです。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Toshio Blog]]></title><description><![CDATA[description.]]></description><link>https://ta-toshio.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Sat, 16 Feb 2019 00:01:18 GMT</lastBuildDate><item><title><![CDATA[Use Aws Elb #3]]></title><description><![CDATA[前回の続きです。 方針 AMIの作成 ELBの作成 ターゲットグループの設定 Auto Scalingの設定 起動設定 Auto Scalingグループ どのようなルール（＝Auto Scalingグループ）でどのようなインスタンス（=起動設定）を増減するか。 Auto…]]></description><link>https://ta-toshio.github.io/blog//2019-02-11-use-aws-elb-3/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-11-use-aws-elb-3/</guid><pubDate>Mon, 11 Feb 2019 07:03:26 GMT</pubDate><content:encoded>&lt;p&gt;前回の続きです。&lt;/p&gt;
 &lt;h4&gt;方針&lt;/h4&gt;
 &lt;ol start=&quot;0&quot;&gt;
 &lt;li&gt;
@@ -42,8 +42,9 @@
 &lt;p&gt;Auto Scalingのルールを設定
 今回は最低1個のインスタンスで、最大2個
 &lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52552607-36869200-2e24-11e9-84a7-798426341e6c.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;スケールアウトの設定&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52552608-371f2880-2e24-11e9-9a01-55c5b417ca9e.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;スケールアウトの設定&lt;br /&gt;
+「ステップスケーリングポリシーまたは簡易スケーリングポリシーを使用した Auto Scaling グループのスケーリング」を押下
+&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52552608-371f2880-2e24-11e9-9a01-55c5b417ca9e.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;新しいアラームを追加を押下
 &lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52552609-371f2880-2e24-11e9-92c8-e589c82365fa.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;CPUが40%以上の使用率になったらインスタンス1個立ち上げる&lt;/p&gt;
@@ -58,7 +59,7 @@
 &lt;p&gt;登録済みターゲットにいま起動設定とAuto Scalingグループで設定したインスタンスが一個増えている&lt;/p&gt;
 &lt;p&gt;EC2一覧画面にて
 &lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52552617-38e8ec00-2e24-11e9-913b-1b6c050b3fc9.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;ここで想定外だったのは、Web-1aというインスタンスがすでにロードバランサが管理しているターゲットにいるので、Auto Scaling最低1個から最大2個のインスタンス数設定に当てはまるかと思ったら、そうではないですね。Auto Scalingから作成されたインスタンス数を最低1個から最大2個の範囲で管理するのですね。&lt;/p&gt;
+&lt;p&gt;ここで想定外だったのは、Web-1aというインスタンスがすでにロードバランサが管理しているターゲットにいるので、Auto Scaling最低1個から最大2個のインスタンス数設定に当てはまるかと思ったら、そうではないのですね。Auto Scalingから作成されたインスタンス数が、最低1個から最大2個の範囲で管理するのですね。&lt;/p&gt;
 &lt;p&gt;ということでWeb-1aを外してしまう。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52552618-38e8ec00-2e24-11e9-85d7-b4046b22bf92.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52552619-38e8ec00-2e24-11e9-8752-d42472c7923b.png&quot;&gt;&lt;/p&gt;
@@ -82,6 +83,8 @@
 &lt;p&gt;申し訳ないのですが、Apacheが動いていてブラウザから確認できる箇所は記事中では省いてしまったので、本当にロードバランシングされているか分かりにくい記事になってしまったと思います。&lt;/p&gt;
 &lt;p&gt;あと、インスタンスを全部削除したときの振る舞いも確認したら、Auto Scalingがインスタンス起動させたことも確認しました。
 インスタンスは全てストップさせたかったので、Auto Scalingの動作を無効にする、ということをしたかったのですが、操作方法が分からなかったので、作成した起動設定とAuto Scalingグループのルールは削除しました。&lt;/p&gt;
+&lt;p&gt;追記:
+Auto Scalingの無効化を、インスタンスのサイズを最小0にして実現してみました。&lt;/p&gt;
 &lt;p&gt;以上になります。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Use Aws Elb #2]]></title><description><![CDATA[前回の続きです。 方針 AMIの作成 ELBの作成 <- ここから 対象となるサブネット セキュリティーグループの設定 ターゲットグループの設定 ヘルスチェックの設定 どのインスタンスをELBの配下に設定するか Auto Scalingの設定 作業 ELB…]]></description><link>https://ta-toshio.github.io/blog//2019-02-09-use-aws-elb-2/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-02-09-use-aws-elb-2/</guid><pubDate>Sat, 09 Feb 2019 06:02:15 GMT</pubDate><content:encoded>&lt;p&gt;前回の続きです。&lt;/p&gt;
 &lt;h4&gt;方針&lt;/h4&gt;
 &lt;ol start=&quot;0&quot;&gt;
@@ -110,13 +113,13 @@
 &lt;h5&gt;ELBの作成、ターゲットグループの設定&lt;/h5&gt;
 &lt;p&gt;Applicatin Load Balancerを選択後、ロードバランサーの設定の入力画面
 &lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52547984-5ad77400-2e0e-11e9-9fcc-2c9741f6a5ee.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;ヘルスチェック（死活監視）を使用するのに利用するのかな、と推測。&lt;/p&gt;
+&lt;p&gt;リスナーはヘルスチェック（死活監視）を使用するのに利用するのかな、と推測。&lt;/p&gt;
 &lt;p&gt;ロードバランサーを適用するアベイラビリティゾーン、ひいてはサブネット
 &lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52547986-5ad77400-2e0e-11e9-8b44-b0a2b1916a28.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52547987-5ad77400-2e0e-11e9-8cae-fae7cff0192a.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;セキュリティーブループ
 &lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52547988-5b700a80-2e0e-11e9-852e-f2bf3d68deef.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;httpに変更。あとHTTPSも追加したほうがいいのかもしれない。公開は追加しなかった&lt;/p&gt;
+&lt;p&gt;httpに変更。あとHTTPSも追加したほうがいいのかもしれない。今回は追加しなかった&lt;/p&gt;
 &lt;p&gt;ターゲットグループの作成
 &lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52547989-5b700a80-2e0e-11e9-8152-751b4a2511d0.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52547991-5b700a80-2e0e-11e9-961c-11a6c0d3c102.png&quot;&gt;&lt;/p&gt;
@@ -294,7 +297,7 @@
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52534693-0f7a8280-2d88-11e9-96c1-8539514de0ba.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52534694-0f7a8280-2d88-11e9-88f6-e8d4a88f6a84.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37950257/52534696-10131900-2d88-11e9-9d54-dab9cac48498.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;NATゲートウェイ作成時に、Elastic IPも作成したが、NATゲートウェイの削除が完了した後Elastic IPも削除されたこと確認した。&lt;/p&gt;
+&lt;p&gt;NATゲートウェイ作成時に、Elastic IPも作成しましたので削除しました。&lt;/p&gt;
 &lt;p&gt;以上になります。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Create Vpc Public Subnet And Ec 2]]></title><description><![CDATA[理解を深めるための備忘録です。
 こちらの講座をもとに作業しました。詳しい解説はそちらを閲覧してください。（有料です） https://www.udemy.com/aws-14days/ VPCをつくる 独立したネットワークを構築するができるもの。 サブネット IP…]]></description><link>https://ta-toshio.github.io/blog//2019-01-08-create-vpc-public-subnet-and-ec-2/</link><guid isPermaLink="false">https://ta-toshio.github.io/blog//2019-01-08-create-vpc-public-subnet-and-ec-2/</guid><pubDate>Tue, 08 Jan 2019 08:36:55 GMT</pubDate><content:encoded>&lt;p&gt;理解を深めるための備忘録です。
 こちらの講座をもとに作業しました。詳しい解説はそちらを閲覧してください。（有料です）&lt;/p&gt;
